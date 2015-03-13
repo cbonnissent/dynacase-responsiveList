@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RESPONSIVE_LIST_fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-12 11:16+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain;  charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "RESP:Search"
+msgstr "Mot clef"
+
+msgid "RSP:Loading"
+msgstr "Chargement..."
+
+msgid "RSP:Title"
+msgstr "Les documents"
+
+msgid "RSPL:Basic ACL"
+msgstr "Basique"
+
+msgid "RSPL:MAIN"
+msgstr "Action principale"
+
+msgid "RSPL:RESPONSIVE_LIST"
+msgstr "Liste de documents"

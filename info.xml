@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<module xmlns="urn:dynacase:webinst:module/1.0" name="@moduleName@" release="@release@" version="@version@">
+    <description>Responsive List : a proposition of interface</description>
+
+    <requires>
+        <module comp="ge" name="dynacase-core" version="3.2"/>
+        <module name='dynacase-requirejs-installer'/>
+        <module name='dynacase-underscore-installer'/>
+        <module name='dynacase-backbone-installer' comp='ge' version='1.1.2'/>
+        <module name='dynacase-bootstrap-3-installer' comp='ge' version='3.2.0'/>
+        <module name='dynacase-httpapi-v1'/>
+        <module name="dynacase-document-uis"/>
+    </requires>
+
+    <post-install>
+        <process command="programs/record_application RESPONSIVE_LIST"/>
+        <process command="./wsh.php --app=HTTPAPI_V1 --action=INIT_RULES"/>
+        <process command="./wsh.php --api=setStyle"/>
+        <process command="programs/update_catalog"/>
+    </post-install>
+    <post-upgrade>
+        <process command="programs/pre_migration RESPONSIVE_LIST"/>
+        <process command="programs/record_application RESPONSIVE_LIST"/>
+        <process command="programs/post_migration RESPONSIVE_LIST"/>
+        <process command="./wsh.php --app=HTTPAPI_V1 --action=INIT_RULES"/>
+        <process command="./wsh.php --api=setStyle"/>
+        <process command="programs/update_catalog"/>
+    </post-upgrade>
+</module>

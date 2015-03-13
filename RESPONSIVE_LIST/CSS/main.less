@@ -1,0 +1,83 @@
+@import "../../lib/bootstrap/3/less/variables.less";
+@import "../../lib/bootstrap/3/less/mixins.less";
+// Reset and dependencies
+@import "../../lib/bootstrap/3/less/normalize.less";
+@import "../../lib/bootstrap/3/less/print.less";
+@import "../../lib/bootstrap/3/less/glyphicons.less";
+// Core CSS
+@import "../../lib/bootstrap/3/less/scaffolding.less";
+@import "../../lib/bootstrap/3/less/type.less";
+@import "../../lib/bootstrap/3/less/grid.less";
+@import "../../lib/bootstrap/3/less/forms.less";
+@import "../../lib/bootstrap/3/less/buttons.less";
+@import "../../lib/bootstrap/3/less/input-groups.less";
+@import "../../lib/bootstrap/3/less/list-group.less";
+@import "../../lib/bootstrap/3/less/labels.less";
+@import "../../lib/bootstrap/3/less/navs.less";
+@import "../../lib/bootstrap/3/less/navbar.less";
+@import "../../lib/bootstrap/3/less/utilities.less";
+@import "../../lib/bootstrap/3/less/responsive-utilities.less";
+
+@grid-gutter-width: 0;
+
+.loading__wrapper {
+  text-align: center;
+  .make-xs-column(12);
+}
+
+.documentsList {
+  .make-xs-column(12);
+  .make-sm-column(4);
+  .make-md-column(3);
+  .make-lg-column(2);
+  @media (min-width: @screen-sm-min) {
+    border-right: 1px solid @nav-tabs-border-color;
+  }
+}
+
+.documentsList__documents__list__element__nbResult {
+  padding: 0.5em;
+}
+
+.documentsList__documents__search__form {
+  padding-top: 0.5em;
+}
+
+.documentsList__documents__list__element__reload {
+  position: relative;
+  top: -0.35em;
+}
+
+.documentsList__documents__list__elements {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.documentElement {
+  padding: 5px;
+}
+
+.documentElement__icon {
+  margin-right: 0.5em;
+}
+
+.documentElement__state {
+  position: relative;
+  top: 0.4em;
+}
+
+.openDocuments {
+  .make-xs-column(12);
+  .make-sm-column(8);
+  .make-md-column(9);
+  .make-lg-column(10);
+}
+
+.documentsWrapper__div {
+  width: 100%;
+  height: 100%;
+}
+
+.documentElement__remove {
+  padding: 0 0.1em 0 0;
+}

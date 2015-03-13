@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="[DYNACASE_FAVICO]"/>
+    <link rel="shortcut icon" href="[DYNACASE_FAVICO]"/>
+    <title>[TEXT:RSP:Title]</title>
+    [CSS:CUSTOMREF]
+</head>
+<body>
+<div class="container-fluid main-container">
+    <div class="row loading loading--initial">
+        <div class="loading__wrapper">
+            <h1>[TEXT:RSP:Loading]</h1>
+        </div>
+    </div>
+    <div class="row content" style="display : none;">
+        <div class="documentsList">
+            <div class="row">
+                <div class="documentsList__searchList col-sm-12 col-xs-10">
+                </div>
+                <div class="col-xs-2">
+                    <button type="button" class="btn btn-default btn-block visible-xs documentList__switch">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="documentsList__documents">
+                <div class="documentsList__documents__search">
+                    <form action="#" class="documentsList__documents__search__form">
+                        <div class="input-group">
+                            <input type="text" class="form-control documentsList__documents__search__keyWord" placeholder="[TEXT:RESP:Search]">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                          </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="documentsList__documents__list">
+
+                </div>
+            </div>
+        </div>
+        <div class="openDocuments hidden-xs">
+
+        </div>
+    </div>
+</div>
+<script>
+    window.dcp = window.dcp || {};
+    window.dcp.ws = "[WS]";
+</script>
+[BLOCK JS_LINKS]
+<script type="text/javascript" src="[src]"></script>
+[ENDBLOCK JS_LINKS]
+[JS:REF]
+</body>
+</html>

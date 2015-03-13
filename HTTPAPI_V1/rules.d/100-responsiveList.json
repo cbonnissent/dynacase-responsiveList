@@ -1,0 +1,9 @@
+[
+  {
+    "order": 1000,
+    "class": "\\RESPONSIVE_LIST\\ListDocument",
+    "regExp": "%^/rspl/listDocument/(?P<collectionId>[^/]+)$%",
+    "description": "Document View List",
+    "canonicalURL": "rspl/listDocument/<collectionId>"
+  }
+]
