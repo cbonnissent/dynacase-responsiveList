@@ -6,9 +6,9 @@ define([
 
     "use strict";
 
-    var template = _.template('<a href="#<%- id %>" data-id="<%- id %>" data-title="<%- title %>">' +
-    '<%- title %> ' +
-    '<button class="btn btn-link documentElement__remove"><span class="glyphicon glyphicon-remove-circle"></span></button>' +
+    var template = _.template('<a class="documentTab" href="#<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>">' +
+    '<span class="documentTab__text"><%- title %></span>' +
+    '<button type="button" class="close documentTab__remove" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
     '</a>');
 
     return Backbone.View.extend({
@@ -17,7 +17,7 @@ define([
 
         events : {
             "click" : "selected",
-            "click .documentElement__remove" : "remove"
+            "click .documentTab__remove" : "remove"
         },
 
         initialize : function opde_initialize() {
@@ -29,10 +29,12 @@ define([
 
         render : function opde__render() {
             this.$el.empty().append(template(this.model.toJSON()));
+            this.$el.attr("title", this.model.get("title"));
             return this;
         },
 
-        selected : function opde_selected() {
+        selected : function opde_selected(event) {
+            event.preventDefault();
             this.model.trigger("selected", this.model);
         },
 

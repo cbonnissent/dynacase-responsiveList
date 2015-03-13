@@ -9,7 +9,7 @@ define([
 
     var template = {
         "global": _.template('<div class="documentsList__documents__list__element <%- id %>">' +
-        '<div class="bg-info documentsList__documents__list__element__nbResult">' +
+        '<div class="bg-info documentsList__documents__list__element__nbResult clearfix">' +
         '<span class="documentsList__documents__list__element__nbResult__container"></span>' +
         '<button class="btn btn-link pull-right documentsList__documents__list__element__reload"><span class="glyphicon glyphicon-refresh pull-right" aria-hidden="true"></span></button>' +
         '</div>' +
@@ -18,7 +18,7 @@ define([
         '   <div class="documentsList__documents__list__elements__loading">Loading...</div>' +
         '</div>' +
         '</div>'),
-        "document": _.template('<a href="#<%- id %>" data-id="<%- id %>" data-title="<%- title %>" class="list-group-item documentElement clearfix"> ' +
+        "document": _.template('<a href="#<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>" class="list-group-item documentElement clearfix"> ' +
         '<img src="<%- icon %>" class="img-circle documentElement__icon" /><%- title %>' +
         '<% if (state) { %> <span class="label label-default pull-right documentElement__state" ' +
         'style="background-color : <%- state.color %>;' +
@@ -86,12 +86,12 @@ define([
 
         openDocument: function dl_openDocument(event)
         {
-            var $target = $(event.target), id = $target.data("id"), document = this.openDocuments.get(id);
+            var $target = $(event.currentTarget), id = $target.data("id"), document = this.openDocuments.get(id);
             event.preventDefault();
             if (document) {
                 document.trigger("selected", document);
             } else {
-                this.openDocuments.add({id: $target.data("id"), title: $target.data("title")});
+                this.openDocuments.add({initid: id, title: $target.data("title")});
             }
         },
 
@@ -137,9 +137,12 @@ define([
 
         _updateNumber: function _updateNumber(model, list)
         {
-            var $currentDiv = this._getCurrentDiv(model);
+            var $currentDiv = this._getCurrentDiv(model), text = " document";
             if ($currentDiv) {
-                $currentDiv.find(".documentsList__documents__list__element__nbResult__container").text(list.nbResult + " documents");
+                if (list.nbResult > 1) {
+                    text = " documents";
+                }
+                $currentDiv.find(".documentsList__documents__list__element__nbResult__container").text(list.nbResult + text);
             }
         },
 
@@ -175,7 +178,6 @@ define([
 
         _isElementVisible: function isElementInViewport(el)
         {
-
             //special bonus for those using jQuery
             if (typeof $ === "function" && el instanceof $) {
                 el = el[0];

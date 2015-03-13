@@ -7,11 +7,16 @@ define([
 
     return Backbone.Model.extend({
 
-        defaults : {
-            state : null
+        idAttribute: "initid",
+
+        defaults: {
+            state: null,
+            viewId : "!defaultConsultation",
+            "title" : "Chargement..."
         },
 
-        isNew : function() {
+        isNew: function ()
+        {
             return true;
         },
 

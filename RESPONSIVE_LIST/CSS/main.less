@@ -10,12 +10,15 @@
 @import "../../lib/bootstrap/3/less/grid.less";
 @import "../../lib/bootstrap/3/less/forms.less";
 @import "../../lib/bootstrap/3/less/buttons.less";
+@import "../../lib/bootstrap/3/less/button-groups.less";
+@import "../../lib/bootstrap/3/less/dropdowns.less";
 @import "../../lib/bootstrap/3/less/input-groups.less";
 @import "../../lib/bootstrap/3/less/list-group.less";
 @import "../../lib/bootstrap/3/less/labels.less";
 @import "../../lib/bootstrap/3/less/navs.less";
 @import "../../lib/bootstrap/3/less/navbar.less";
 @import "../../lib/bootstrap/3/less/utilities.less";
+@import "../../lib/bootstrap/3/less/close.less";
 @import "../../lib/bootstrap/3/less/responsive-utilities.less";
 
 @grid-gutter-width: 0;
@@ -27,8 +30,8 @@
 
 .documentsList {
   .make-xs-column(12);
-  .make-sm-column(4);
-  .make-md-column(3);
+  .make-sm-column(2);
+  .make-md-column(2);
   .make-lg-column(2);
   @media (min-width: @screen-sm-min) {
     border-right: 1px solid @nav-tabs-border-color;
@@ -68,8 +71,8 @@
 
 .openDocuments {
   .make-xs-column(12);
-  .make-sm-column(8);
-  .make-md-column(9);
+  .make-sm-column(10);
+  .make-md-column(10);
   .make-lg-column(10);
 }
 
@@ -78,6 +81,35 @@
   height: 100%;
 }
 
-.documentElement__remove {
-  padding: 0 0.1em 0 0;
+.documentTab {
+  width: 15em;
+  height: 2em;
+}
+
+.documentTab, li > a.documentTab {
+  padding: 0.2em 0.4em;
+  border: 1px solid @gray-lighter;
+}
+
+.documentTab__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 2em;
+}
+
+li.active .documentTab__remove {
+  color : white;
+  .opacity(0.75);
+  &:hover,
+  &:focus {
+    color: white;
+    .opacity(1);
+  }
+}
+
+.openDocuments__openDocumentList, .openDocuments__createDocument {
+  .btn {
+    padding: 3px 12px;
+  }
 }

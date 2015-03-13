@@ -26,7 +26,6 @@ require(["jquery",
     window.dcp.views = window.dcp.views || {};
 
     window.dcp.collections.searches = new CollectionSearch();
-    window.dcp.collections.searches.fetch();
     window.dcp.collections.openDocuments = new CollectionOpenDocument();
 
     $(document).ready(function rsp_ready()
@@ -59,7 +58,10 @@ require(["jquery",
         });
         window.dcp.views.openDocument.render();
         window.dcp.views.documentList.render();
+        window.dcp.collections.searches.add(window.dcp.search_list);
+        window.dcp.views.searches.displayDocumentList();
         $(".loading--initial").hide();
         $(".content").show();
+        $(window).trigger("resize");
     });
 });

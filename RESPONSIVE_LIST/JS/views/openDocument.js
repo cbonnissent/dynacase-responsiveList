@@ -3,24 +3,42 @@ define([
     "underscore",
     "rsp/views/openDocumentListElement",
     "rsp/views/documentWidget",
-    "backbone"
+    "backbone",
+    "bootstrap"
 ], function ($, _, ViewOpenDocumentListElement, ViewDocumentWidget)
 {
 
     "use strict";
 
     var template = {
-        "global": _.template('<ul class="nav nav-tabs documentList">' +
+        "global": _.template('<ul class="nav nav-pills documentList">' +
         '   <li class="openDocuments__openDocumentList visible-xs">' +
         '       <button class="btn btn-default"><span class="glyphicon glyphicon-menu-hamburger"></span></button>' +
         '   </li>' +
-        '</ul><div class="documentsWrapper"></div> ')
+        '   <li class="openDocuments__createDocument">' +
+        '       <div class="btn-group" title="Créer un document">' +
+        '           <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' +
+        '               <span class="glyphicon glyphicon-plus-sign"></span> <span class="caret"></span>' +
+        '           </button>' +
+        '           <ul class="dropdown-menu openDocuments__createDocument__families" role="menu">' +
+        '           </ul>' +
+        '       </div>' +
+        '   </li>' +
+        '</ul><div class="documentsWrapper"></div> '),
+        "families" : _.template('<% _.each(families, function(currentFamily) { %>' +
+        '<li>' +
+        '   <a class="openDocuments__createDocument__familyElement" href="#<%- currentFamily.initid %>" data-initid="<%- currentFamily.initid %>">' +
+        '       <img src="<%- currentFamily.icon %>" class="img-circle documentElement__icon"><%- currentFamily.title %>' +
+        '   </a>' +
+        '</li>' +
+        ' <% }); %>')
     };
 
     return Backbone.View.extend({
 
         events: {
-            "click .openDocuments__openDocumentList": "switchSide"
+            "click .openDocuments__openDocumentList": "switchSide",
+            "click .openDocuments__createDocument__familyElement" : "openCreation"
         },
 
         initialize: function opd_initialize(options)
@@ -36,6 +54,11 @@ define([
         render: function opd_render()
         {
             this.$el.append(template.global());
+            if (window.dcp.creatable_family.length === 0) {
+                this.$el.find(".openDocuments__createDocument").remove();
+            } else {
+                this.$el.find(".openDocuments__createDocument__families").append(template.families({families : window.dcp.creatable_family}));
+            }
             return this;
         },
 
@@ -46,6 +69,12 @@ define([
 
         openDocumentIHM : function opd_openDocumentIHM() {
             this.trigger("openDocumentIHM");
+        },
+
+        openCreation : function opd_openCreation(event) {
+            var $target = $(event.currentTarget);
+            event.preventDefault();
+            this.openDocuments.add({"initid": $target.data("initid"), "viewId" : "!coreCreation"});
         },
 
         _addDocument: function opd_addDocument(model)

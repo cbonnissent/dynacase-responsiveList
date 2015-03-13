@@ -50,7 +50,7 @@ define([
         {
             var currentSearch = this.$el.find(".documentsList__searchList__select").val(), documentModel = this.collection.get(currentSearch);
             if (documentModel) {
-                this.collection.get(currentSearch).trigger("selected", documentModel);
+                documentModel.trigger("selected", documentModel);
             }
         }
     });

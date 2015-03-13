@@ -14,8 +14,7 @@ define([
 
         initialize: function opde_initialize()
         {
-            this.listenTo(this.model, "change:title", this.render);
-            this.listenTo(this.model, "change:id", this.render);
+            //this.listenTo(this.model, "change:initid", this.render);
             this.listenTo(this.model, "change:selected", this.indicateSelected);
             this.listenTo(this.model, "destroy", this.delete);
             $(window).on("resize", _.bind(this._resize, this));
@@ -23,7 +22,27 @@ define([
 
         render: function dw_render()
         {
-            this.$el.empty().document({"initid": this.model.id, withoutResize: true});
+            var currentView = this;
+            this.$el.empty().document({"initid": this.model.id, "viewId" : this.model.get("viewId"),withoutResize: true});
+            this.$el.document("addEvent", "ready", function (event, document)
+            {
+                currentView.model.set("initid", document.initid);
+                currentView.model.set("title", document.title || "");
+                currentView.model.set("viewId", document.viewId);
+            });
+            this.$el.document("addEvent", "beforeClose", function (event, document, newDocument)
+            {
+                var currentDocument = currentView.model.collection.get(newDocument.initid);
+                if (newDocument.initid === currentView.model.get("initid")) {
+                    return;
+                }
+                event.preventDefault();
+                if (currentDocument) {
+                    currentDocument.trigger("selected", currentDocument);
+                } else {
+                    currentView.model.collection.add({initid: newDocument.initid, title: "Chargement"});
+                }
+            });
             return this;
         },
 

@@ -1,7 +1,8 @@
 define([
+    "underscore",
     "rsp/models/search",
     "backbone"
-], function (model)
+], function (_, model)
 {
     "use strict";
 
