@@ -7,6 +7,7 @@
         "jquery": "empty:",
         "underscore": "empty:",
         "backbone": "empty:",
+        "bootstrap": "empty:"
     },
     generateSourceMaps: true,
     preserveLicenseComments: false,
