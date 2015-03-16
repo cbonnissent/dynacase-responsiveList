@@ -33,7 +33,8 @@ define([
             this.$el.document("addEvent", "beforeClose", function (event, document, newDocument)
             {
                 var currentDocument = currentView.model.collection.get(newDocument.initid);
-                if (newDocument.initid === currentView.model.get("initid")) {
+                if (parseInt(newDocument.initid, 10) === parseInt(currentView.model.get("initid"), 10)) {
+                    currentDocument.trigger("selected", currentDocument);
                     return;
                 }
                 event.preventDefault();
