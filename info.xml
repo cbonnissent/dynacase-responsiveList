@@ -17,7 +17,6 @@
         <process
                 command='./wsh.php --api=importDocuments --file=RESPONSIVE_LIST/DATA__DIR.csv --csv-separator=&apos;;&apos; --csv-enclosure=&apos;"&apos;'/>
         <process command="./wsh.php --app=HTTPAPI_V1 --action=INIT_RULES"/>
-        <process command="./wsh.php --api=setStyle"/>
         <process command="programs/update_catalog"/>
     </post-install>
     <post-upgrade>
@@ -25,7 +24,6 @@
         <process command="programs/record_application RESPONSIVE_LIST"/>
         <process command="programs/post_migration RESPONSIVE_LIST"/>
         <process command="./wsh.php --app=HTTPAPI_V1 --action=INIT_RULES"/>
-        <process command="./wsh.php --api=setStyle"/>
         <process command="programs/update_catalog"/>
     </post-upgrade>
 </module>
