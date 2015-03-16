@@ -15,12 +15,20 @@ function main(Action &$action)
     $action->parent->addJsRef(
         "RESPONSIVE_LIST/JS/require_config.js?ws=" . $version
     );
-    $action->parent->addJsRef(
-        "RESPONSIVE_LIST/JS/main.js?ws=" . $version
+    $modeDebug = \ApplicationParameterManager::getParameterValue(
+        \ApplicationParameterManager::CURRENT_APPLICATION, "DEBUG"
     );
-//    $action->parent->addJsRef(
-//        "RESPONSIVE_LIST/JS/main-built.js?ws=" . $version
-//    );
+    if ($modeDebug !== "FALSE") {
+        $action->parent->addJsRef(
+            "RESPONSIVE_LIST/JS/main.js?ws=" . $version
+        );
+    } else {
+        $action->parent->addJsRef(
+            "RESPONSIVE_LIST/JS/main-built.js?ws=" . $version
+        );
+    }
+
+
 
     //SearchList
     $searchList = new \SearchDoc();
