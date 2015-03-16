@@ -20,6 +20,12 @@ require(["jquery",
         $(window).trigger("resize");
     };
 
+    if (!window.dcp.search_list || window.dcp.search_list.length === 0) {
+        $(".loading--initial").hide();
+        $(".error__wrapper").show();
+        return;
+    }
+
     window.dcp = window.dcp || {};
 
     window.dcp.collections = window.dcp.collections || {};
