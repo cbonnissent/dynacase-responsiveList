@@ -27,6 +27,9 @@ define([
                     newModel.trigger("selected", newModel);
                 }
             }
+            if (this.length === 0) {
+                window.document.title = "Les documents";
+            }
         }
     });
 });

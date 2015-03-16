@@ -158,7 +158,7 @@ define([
                 $loading.remove();
             }
             else {
-                if (this._isElementVisible($loading)) {
+                if (this.$el.is(":visible") && this._isElementVisible($loading)) {
                     list.offset += list.slice;
                     list.fetch({remove: false});
                 }

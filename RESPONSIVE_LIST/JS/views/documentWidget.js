@@ -16,6 +16,7 @@ define([
         {
             //this.listenTo(this.model, "change:initid", this.render);
             this.listenTo(this.model, "change:selected", this.indicateSelected);
+            this.listenTo(this.model, "change:title", this.indicateSelected);
             this.listenTo(this.model, "destroy", this.delete);
             $(window).on("resize", _.debounce(_.bind(this._resize, this), 100));
         },
@@ -51,6 +52,7 @@ define([
         {
             if (this.model.get("selected")) {
                 this.$el.show();
+                window.document.title = this.model.get("title");
                 this._resize();
             } else {
                 this.$el.hide();
