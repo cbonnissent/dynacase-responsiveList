@@ -1,0 +1,4 @@
+//FAM;dossier(DIR);<specid>;<fldid>;titre
+ORDER;DIR;;;ba_title
+DOC;DIR;DIR_RESPONSIVE_LIST;9;ResponsiveList Collection
+DOC;DIR;DIR_RESP_LIST_FAM;9;ResponsiveList Families
