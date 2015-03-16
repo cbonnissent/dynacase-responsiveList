@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RESPONSIVE_LIST_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-13 17:58+0100\n"
+"POT-Creation-Date: 2015-03-13 19:12+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -19,6 +19,9 @@ msgstr "Chargement..."
 
 msgid "RSP:Title"
 msgstr "Les documents"
+
+msgid "RSP:You need to configure some families before use these interface."
+msgstr "Vous devez configurer l'application avant d'utiliser cette interface"
 
 msgid "RSPL:Basic ACL"
 msgstr "Basique"
