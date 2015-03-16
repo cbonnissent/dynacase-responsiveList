@@ -17,7 +17,7 @@ define([
             //this.listenTo(this.model, "change:initid", this.render);
             this.listenTo(this.model, "change:selected", this.indicateSelected);
             this.listenTo(this.model, "destroy", this.delete);
-            $(window).on("resize", _.bind(this._resize, this));
+            $(window).on("resize", _.debounce(_.bind(this._resize, this), 100));
         },
 
         render: function dw_render()
@@ -64,7 +64,7 @@ define([
                 _.defer(function secondHeightResize()
                 {
                     currentView.$el.find("iframe").height($(window).innerHeight() - currentView.$el.position().top - 5);
-                });
+                }, 50);
             }
         },
 
