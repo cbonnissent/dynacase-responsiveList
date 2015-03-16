@@ -1,0 +1,13 @@
+{
+  "short_name": "Dynacase",
+  "name": "Dynacase",
+  "icons": [
+    {
+      "src": "../Images/logodynacase.png",
+      "sizes": "100x136",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "../?app=RESPONSIVE_LIST&standalone=TRUE",
+  "display": "standalone"
+}
