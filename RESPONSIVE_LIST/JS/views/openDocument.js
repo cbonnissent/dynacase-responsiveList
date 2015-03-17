@@ -18,6 +18,7 @@ define([
         '   <li class="openDocuments__createDocument">' +
         '       <div class="btn-group" title="Créer un document">' +
         '           <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' +
+        '               Nouveau' +
         '               <span class="glyphicon glyphicon-plus-sign"></span> <span class="caret"></span>' +
         '           </button>' +
         '           <ul class="dropdown-menu openDocuments__createDocument__families" role="menu">' +
