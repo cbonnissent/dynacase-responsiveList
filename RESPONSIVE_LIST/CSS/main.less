@@ -92,21 +92,19 @@
 .documentTab {
   width: 15em;
   height: 2em;
-}
-
-.documentTab, li > a.documentTab {
-  padding: 0.2em 0.4em;
-  border: 1px solid @gray-lighter;
-}
-
-.documentTab__text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding-right: 2em;
+}
+
+.documentTab, li > a.documentTab {
+  padding: 0.2em 1em 0.2em 0.4em;
+  border: 1px solid @gray-lighter;
 }
 
 li.active .documentTab__remove {
+  position: absolute;
+  right: 0.2em;
   color: white;
   .opacity(0.75);
   &:hover,
