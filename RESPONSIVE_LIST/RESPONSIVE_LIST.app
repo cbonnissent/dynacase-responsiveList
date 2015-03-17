@@ -5,7 +5,8 @@ $app_desc = array(
     "short_name" => N_("RSPL:RESPONSIVE_LIST"),
     "description" => N_("RSPL:RESPONSIVE_LIST"),
     "icon" => "RESPONSIVE_LIST.png",
-    "displayable" => "N",
+    "displayable" => "U",
+    "with_frame" => "Y",
     "childof" => ""
 );
 

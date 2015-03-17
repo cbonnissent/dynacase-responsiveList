@@ -3,7 +3,7 @@
     "version" : "1.0.0",
     "release" : "0",
     "application" : ["RESPONSIVE_LIST"],
-    "includedPath" : ["locale","Images", "HTTPAPI_V1"],
+    "includedPath" : ["locale","Images", "HTTPAPI_V1", "STYLE"],
     "lang" : ["fr","en"],
     "csvParam" : {"enclosure" : "\"", "delimiter": ";"},
     "dynacase-devtool" : {
