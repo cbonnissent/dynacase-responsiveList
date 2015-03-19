@@ -11,7 +11,7 @@ define([
         "global": _.template('<div class="documentsList__documents__list__element <%- id %>">' +
         '<div class="bg-info documentsList__documents__list__element__nbResult clearfix">' +
         '<span class="documentsList__documents__list__element__nbResult__container"></span>' +
-        '<button class="btn btn-link pull-right documentsList__documents__list__element__reload"><span class="glyphicon glyphicon-refresh pull-right" aria-hidden="true"></span></button>' +
+        '<button class="btn btn-link pull-right documentsList__documents__list__element__reload"><span class="glyphicon glyphicon-repeat pull-right" aria-hidden="true"></span></button>' +
         '</div>' +
         '<div class="documentsList__documents__list__elements">' +
         '   <div class="list-group"></div>' +

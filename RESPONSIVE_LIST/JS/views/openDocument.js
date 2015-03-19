@@ -12,7 +12,7 @@ define([
 
     var template = {
         "global": _.template('<ul class="nav nav-pills documentList">' +
-        '   <li class="openDocuments__openDocumentList visible-xs">' +
+        '   <li class="openDocuments__openDocumentList visible-xs visible-sm">' +
         '       <button class="btn btn-default"><span class="glyphicon glyphicon-menu-hamburger"></span></button>' +
         '   </li>' +
         '   <li class="openDocuments__createDocument">' +

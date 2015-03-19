@@ -25,21 +25,22 @@
 
 .loading__wrapper, .error__wrapper {
   text-align: center;
-  .make-xs-column(12);
+  .make-sm-column(12);
 }
 
 .documentsList {
-  .make-xs-column(12);
-  .make-sm-column(2);
+//  .make-xs-column(12);
+  .make-sm-column(12);
   .make-md-column(2);
   .make-lg-column(2);
-  @media (min-width: @screen-sm-min) {
+  @media (min-width: @screen-md-min) {
     border-right: 1px solid @nav-tabs-border-color;
   }
   z-index: 10;
 }
 
 .documentsList__documents__list__element__nbResult {
+  position:relative;
   padding: 0.5em;
 }
 
@@ -48,8 +49,9 @@
 }
 
 .documentsList__documents__list__element__reload {
-  position: relative;
-  top: -0.35em;
+  position: absolute;
+  right: 0;
+  top: 0.2em;
 }
 
 .documentsList__documents__list__elements {
@@ -77,8 +79,8 @@
 }
 
 .openDocuments {
-  .make-xs-column(12);
-  .make-sm-column(10);
+//  .make-xs-column(12);
+  .make-sm-column(12);
   .make-md-column(10);
   .make-lg-column(10);
   z-index: 10;
