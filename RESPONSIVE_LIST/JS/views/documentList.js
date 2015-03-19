@@ -54,6 +54,8 @@ define([
             this.listenTo(this.collection, "syncDocumentList", this._updateNumber);
             this.listenTo(this.collection, "syncDocumentList", this._needToLoadMore);
             this.listenTo(this, "reloadDocumentList", this.reloadAll);
+            this.listenTo(this, "reloadDocument", this.reloadDocument);
+            this.listenTo(this, "removeDocument", this.removeDocument);
             this.$el.find(".documentsList__documents__search__form").on("submit", function (event)
             {
                 event.preventDefault();
@@ -84,6 +86,19 @@ define([
         reloadAll : function dl_reloadAll() {
             this.reloadSelected();
             this.$el(".documentsList__documents__list__element:hidden").remove();
+        },
+
+        reloadDocument : function dl_reloadDocument(document) {
+            if (!document.state) {
+                document.state = null;
+            }
+            this.$el.find("[href=#"+document.initid+"]").replaceWith(template.document(document));
+        },
+
+        removeDocument: function dl_removeDocument()
+        {
+            this.reloadSelected();
+            this.$el.find("[href=#" + document.initid + "]").remove();
         },
 
         updateKeyWord: function dl_updateKeyWord(event)

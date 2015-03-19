@@ -63,6 +63,14 @@ require(["jquery",
         {
             window.dcp.views.documentList.trigger("reloadDocumentList");
         });
+        window.dcp.collections.openDocuments.listenTo(window.dcp.collections.openDocuments, "reloadDocument", function (currentDocument)
+        {
+            window.dcp.views.documentList.trigger("reloadDocument", currentDocument);
+        });
+        window.dcp.collections.openDocuments.listenTo(window.dcp.collections.openDocuments, "removeDocument", function (currentDocument)
+        {
+            window.dcp.views.documentList.trigger("removeDocument", currentDocument);
+        });
         $(".documentList__switch").on("click", function() {
             toogleLittleMode();
         });
