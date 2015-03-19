@@ -15,8 +15,8 @@ require(["jquery",
     "use strict";
 
     var toogleLittleMode = function() {
-        $(".documentsList").toggleClass("hidden-xs hidden-sm");
-        $(".openDocuments").toggleClass("hidden-xs hidden-sm");
+        $(".documentsList").toggleClass("hiddenLittle");
+        $(".openDocuments").toggleClass("hiddenLittle");
         $(window).trigger("resize");
     };
 
@@ -55,8 +55,8 @@ require(["jquery",
         });
         window.dcp.views.openDocument.listenTo(window.dcp.views.openDocument, "openDocumentIHM", function ()
         {
-            $(".documentsList").addClass("hidden-sm hidden-xs");
-            $(".openDocuments").removeClass("hidden-sm hidden-xs");
+            $(".documentsList").addClass("hiddenLittle");
+            $(".openDocuments").removeClass("hiddenLittle");
             $(window).trigger("resize");
         });
         $(".documentList__switch").on("click", function() {

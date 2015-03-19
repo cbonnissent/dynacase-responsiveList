@@ -69,7 +69,7 @@ define([
         {
             var currentView = this;
             if (this.$el.is(":visible")) {
-                this.$el.find("iframe").height($(window).innerHeight() - this.$el.position().top - 5).width(this.$el.innerWidth());
+                this.$el.find("iframe").height($(window).innerHeight() - this.$el.position().top - 5).width(this.$el.innerWidth() - 1);
                 _.defer(function secondHeightResize()
                 {
                     currentView.$el.find("iframe").height($(window).innerHeight() - currentView.$el.position().top - 5);
