@@ -17,6 +17,7 @@ define([
             //this.listenTo(this.model, "change:initid", this.render);
             this.listenTo(this.model, "change:selected", this.indicateSelected);
             this.listenTo(this.model, "change:title", this.indicateSelected);
+            this.listenTo(this.model, "change", this.setFrameName);
             this.listenTo(this.model, "destroy", this.delete);
             $(window).on("resize", _.debounce(_.bind(this._resize, this), 100));
         },
@@ -24,7 +25,11 @@ define([
         render: function dw_render()
         {
             var currentView = this;
-            this.$el.empty().document({"initid": this.model.id, "viewId" : this.model.get("viewId"),withoutResize: true});
+            this.$el.empty().document({
+                "initid": this.model.id,
+                "viewId": this.model.get("viewId"),
+                withoutResize: true
+            });
             this.$el.document("addEvent", "ready", function (event, document)
             {
                 currentView.model.set("initid", document.initid);
@@ -45,6 +50,7 @@ define([
                     currentView.model.collection.add({initid: newDocument.initid, title: "Chargement"});
                 }
             });
+            this.setFrameName();
             return this;
         },
 
@@ -74,6 +80,12 @@ define([
         "delete": function opde_delete()
         {
             this.$el.remove();
+        },
+
+        setFrameName: function opde_setFrameName()
+        {
+            var name = "document_" + this.model.get("initid") + "_" + this.model.get("title");
+            this.$el.find("iframe").attr("name", name);
         }
 
     });
