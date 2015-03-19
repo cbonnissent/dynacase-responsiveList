@@ -59,6 +59,10 @@ require(["jquery",
             $(".openDocuments").removeClass("hiddenLittle");
             $(window).trigger("resize");
         });
+        window.dcp.collections.openDocuments.listenTo(window.dcp.collections.openDocuments, "reloadDocumentList", function ()
+        {
+            window.dcp.views.documentList.trigger("reloadDocumentList");
+        });
         $(".documentList__switch").on("click", function() {
             toogleLittleMode();
         });

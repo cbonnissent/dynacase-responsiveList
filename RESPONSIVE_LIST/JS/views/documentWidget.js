@@ -50,6 +50,13 @@ define([
                     currentView.model.collection.add({initid: newDocument.initid, title: "Chargement"});
                 }
             });
+            this.$el.document("addEvent", "afterSave", function (event, document, oldDocument)
+            {
+                // if oldDocument.id => 0 afterCreation save
+                if (oldDocument.id === 0) {
+                    currentView.model.trigger("reloadDocumentList");
+                }
+            });
             this.setFrameName();
             return this;
         },

@@ -9,22 +9,26 @@ define([
 
     var template = {
         "global": _.template('<div class="documentsList__documents__list__element <%- id %>">' +
-        '<div class="bg-info documentsList__documents__list__element__nbResult clearfix">' +
-        '<span class="documentsList__documents__list__element__nbResult__container"></span>' +
-        '<button class="btn btn-link pull-right documentsList__documents__list__element__reload"><span class="glyphicon glyphicon-repeat pull-right" aria-hidden="true"></span></button>' +
-        '</div>' +
-        '<div class="documentsList__documents__list__elements">' +
-        '   <div class="list-group"></div>' +
-        '   <div class="documentsList__documents__list__elements__loading">Loading...</div>' +
-        '</div>' +
+        '   <div class="bg-info documentsList__documents__list__element__nbResult clearfix">' +
+        '       <span class="documentsList__documents__list__element__nbResult__container"></span>' +
+        '       <button class="btn btn-link pull-right documentsList__documents__list__element__reload"><span class="glyphicon glyphicon-repeat pull-right" aria-hidden="true"></span></button>' +
+        '   </div>' +
+        '   <div class="documentsList__documents__list__elements">' +
+        '       <div class="list-group"></div>' +
+        '       <div class="documentsList__documents__list__elements__loading">Loading...</div>' +
+        '   </div>' +
         '</div>'),
         "document": _.template('<a href="#<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>" class="list-group-item documentElement clearfix"> ' +
-        '<img src="<%- icon %>" class="img-circle documentElement__icon" /><%- title %>' +
-        '<% if (state) { %> <span class="label label-default pull-right documentElement__state" ' +
-        'style="background-color : <%- state.color %>;' +
+        '   <img src="<%- icon %>" class="img-circle documentElement__icon" />' +
+        '   <%- title %>' +
+        '   <% if (state) { %> ' +
+        '                   <span class="label label-default pull-right documentElement__state" ' +
+        '                           style="background-color : <%- state.color %>;' +
             //compute the complementary grey
-        'color : #<%- (\'000000\' + ((\'0xffffff\' ^ state.color.replace("#", "0x")).toString(16))).slice(-6) %>;">' +
-        '<%- state.displayValue %></span> <% } %>' +
+        '                           color : #<%- (\'000000\' + ((\'0xffffff\' ^ state.color.replace("#", "0x")).toString(16))).slice(-6) %>;">' +
+        '                           <%- state.displayValue %>' +
+        '                   </span> ' +
+        '   <% } %>' +
         '</a>')
     };
 
@@ -49,6 +53,7 @@ define([
             this.listenTo(this.collection, "resetDocumentList", this._addAll);
             this.listenTo(this.collection, "syncDocumentList", this._updateNumber);
             this.listenTo(this.collection, "syncDocumentList", this._needToLoadMore);
+            this.listenTo(this, "reloadDocumentList", this.reloadAll);
             this.$el.find(".documentsList__documents__search__form").on("submit", function (event)
             {
                 event.preventDefault();
@@ -74,6 +79,11 @@ define([
         {
             this.currentSelectedModel.get("associatedDocumentList").reset();
             this.currentSelectedModel.get("associatedDocumentList").fetch();
+        },
+
+        reloadAll : function dl_reloadAll() {
+            this.reloadSelected();
+            this.$el(".documentsList__documents__list__element:hidden").remove();
         },
 
         updateKeyWord: function dl_updateKeyWord(event)
@@ -186,10 +196,10 @@ define([
             var rect = el.getBoundingClientRect();
 
             return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
             );
         }
 
