@@ -12,7 +12,8 @@ define([
         defaults: {
             state: null,
             viewId : "!defaultConsultation",
-            "title" : "Chargement..."
+            "title" : "Chargement...",
+            "icon" : false
         },
 
         isNew: function ()

@@ -35,6 +35,7 @@ define([
                 currentView.model.set("initid", document.initid);
                 currentView.model.set("title", document.title || "");
                 currentView.model.set("viewId", document.viewId);
+                currentView.model.set("icon", document.icon);
                 currentView.model.trigger("reloadDocument", document);
             });
             this.$el.document("addEvent", "beforeClose", function (event, document, newDocument)

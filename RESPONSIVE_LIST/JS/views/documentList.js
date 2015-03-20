@@ -22,12 +22,13 @@ define([
         '   <img src="<%- icon %>" class="img-circle documentElement__icon" />' +
         '   <%- title %>' +
         '   <% if (state) { %> ' +
+        '                    <div>'+
         '                   <span class="label label-default pull-right documentElement__state" ' +
         '                           style="background-color : <%- state.color %>;' +
             //compute the complementary grey
         '                           color : #<%- (\'000000\' + ((\'0xffffff\' ^ state.color.replace("#", "0x")).toString(16))).slice(-6) %>;">' +
         '                           <%- state.displayValue %>' +
-        '                   </span> ' +
+        '                   </span></div> ' +
         '   <% } %>' +
         '</a>')
     };
@@ -61,7 +62,7 @@ define([
                 event.preventDefault();
                 currentView.updateKeyWord(event);
             });
-            $(window).on("resize", _.bind(this._resize, this));
+            $(window).on("resize", _.debounce(_.bind(this._resize, this), 200));
         },
 
         displaySelected: function dl_displaySelected(modelSelected)
@@ -116,7 +117,7 @@ define([
             if (document) {
                 document.trigger("selected", document);
             } else {
-                this.openDocuments.add({initid: id, title: $target.data("title")});
+                this.openDocuments.add({initid: id, title: $target.data("title"), icon : $target.find(".documentElement__icon").attr("src")});
             }
         },
 
@@ -169,6 +170,7 @@ define([
                 }
                 $currentDiv.find(".documentsList__documents__list__element__nbResult__container").text(list.nbResult + text);
             }
+            this._resize();
         },
 
         _needToLoadMore: function _needToLoadMore(model, list)
