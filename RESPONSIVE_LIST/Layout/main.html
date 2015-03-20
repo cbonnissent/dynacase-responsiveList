@@ -25,6 +25,15 @@
         </h1>
     </div>
     <div class="row content" style="display : none;">
+        <div class="row">
+            <div class="col-xs-12 bg-primary">
+                <h4 class="applicationName pull-left">[text_header]</h4>
+                <button type="button" class="pull-right btn btn-default unlog--button">
+                    <span class="glyphicon glyphicon glyphicon-log-out"></span>
+                </button>
+                <h4 class="pull-right"> <span class="glyphicon glyphicon-user"></span>[username]</h4>
+            </div>
+        </div>
         <div class="documentsList">
             <div class="row">
                 <div class="documentsList__searchList">
@@ -69,5 +78,10 @@
 <script type="text/javascript" src="[src]"></script>
 [ENDBLOCK JS_LINKS]
 [JS:REF]
+<form style="display:none;" action="?app=AUTHENT&action=LOGOUT" method="POST" name="disconnect"
+      id="disconnect">
+    <input type="hidden" name="SeenBefore" value="1">
+    <input type="hidden" name="logout" value="Y">
+</form>
 </body>
 </html>

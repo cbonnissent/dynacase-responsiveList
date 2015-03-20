@@ -29,7 +29,6 @@ function main(Action &$action)
     }
 
 
-
     //SearchList
     $searchList = new \SearchDoc();
     $searchList->setObjectReturn();
@@ -71,9 +70,11 @@ function main(Action &$action)
 
     $action->parent->AddCssRef("css/rsp/main.css?ws=" . $version);
 
-    $searchList = array_map(function($currentSearch) {
-        return $currentSearch["properties"];
-    }, $searchListFormatter->format());
+    $searchList = array_map(
+        function ($currentSearch) {
+            return $currentSearch["properties"];
+        }, $searchListFormatter->format()
+    );
 
     $familyList = array_map(
         function ($current) {
@@ -86,6 +87,19 @@ function main(Action &$action)
     );
     $action->lay->set(
         "creatable_family", json_encode($familyList)
+    );
+    $action->lay->eSet(
+        "text_header",
+        _(
+            \ApplicationParameterManager::getParameterValue(
+                \ApplicationParameterManager::CURRENT_APPLICATION,
+                "TEXT_HEADER"
+            )
+        )
+    );
+    $action->lay->eSet(
+        "username",
+        \Doc::getUserName(true)
     );
     $action->lay->eSet("WS", $version);
 }

@@ -74,6 +74,9 @@ require(["jquery",
         $(".documentList__switch").on("click", function() {
             toogleLittleMode();
         });
+        $(".unlog--button").on("click", function() {
+           $("#disconnect").submit();
+        });
         window.dcp.views.openDocument.render();
         window.dcp.views.documentList.render();
         window.dcp.collections.searches.add(window.dcp.search_list);
