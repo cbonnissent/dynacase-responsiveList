@@ -25,7 +25,7 @@ define([
         '           </ul>' +
         '       </div>' +
         '   </li>' +
-        '</ul><div class="documentsWrapper"></div> '),
+        '</ul><div class="documentsWrapper"></div>'),
         "families" : _.template('<% _.each(families, function(currentFamily) { %>' +
         '<li>' +
         '   <a class="openDocuments__createDocument__familyElement" href="#<%- currentFamily.initid %>" data-initid="<%- currentFamily.initid %>">' +
@@ -60,7 +60,14 @@ define([
             } else {
                 this.$el.find(".openDocuments__createDocument__families").append(template.families({families : window.dcp.creatable_family}));
             }
+            this.addPreload();
             return this;
+        },
+
+        addPreload : function opd_addPreload() {
+            var $preload = $('<div class="documentPreload" style="display : none;"></div>');
+            this.$el.find(".documentsWrapper").append($preload);
+            $preload.document({"initid": "VOID_DOCUMENT"});
         },
 
         switchSide: function opd_switchSide()
@@ -80,11 +87,15 @@ define([
 
         _addDocument: function opd_addDocument(model)
         {
-            var viewDocument = new ViewDocumentWidget({model: model}),
+            var preload, viewDocument,
                 viewList = new ViewOpenDocumentListElement({model: model});
+            preload = this.$el.find(".documentPreload");
+            preload.removeClass("documentPreload");
+            viewDocument = new ViewDocumentWidget({model: model, el: preload});
             this.$el.find(".documentList").append(viewList.render().$el);
-            this.$el.find(".documentsWrapper").append(viewDocument.render().$el);
+            viewDocument.render();
             model.trigger("selected", model);
+            this.addPreload();
             viewDocument._resize();
         }
 

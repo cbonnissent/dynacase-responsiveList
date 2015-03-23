@@ -1,0 +1,15 @@
+//FAM;dossier(DIR);<specid>;<fldid>;titre;
+ORDER;DIR;;;ba_title;
+DOC;DIR;DIR_VOID;;DIR_VOID;
+;;;;;
+//FAM;VOID(VOID);<specid>;<fldid>;;
+ORDER;VOID;;;;
+DOC;VOID;VOID_DOCUMENT;;;
+;;;;;
+;;;;;
+;;;;;
+//;Father;Title;Id;Classe;Logical Name
+BEGIN;;VOID;;;VOID
+ICON;void.png;;;;
+DFLDID;DIR_VOID;;;;
+END;;;;;

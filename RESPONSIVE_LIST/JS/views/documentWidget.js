@@ -25,7 +25,7 @@ define([
         render: function dw_render()
         {
             var currentView = this;
-            this.$el.empty().document({
+            this.$el.document("fetchDocument", {
                 "initid": this.model.id,
                 "viewId": this.model.get("viewId"),
                 withoutResize: true
@@ -36,7 +36,10 @@ define([
                 currentView.model.set("title", document.title || "");
                 currentView.model.set("viewId", document.viewId);
                 currentView.model.set("icon", document.icon);
-                currentView.model.trigger("reloadDocument", document);
+                if (document.title) {
+                    currentView.model.trigger("reloadDocument", document);
+                }
+                currentView.$el.show();
             });
             this.$el.document("addEvent", "beforeClose", function (event, document, newDocument)
             {
@@ -82,10 +85,10 @@ define([
         {
             var currentView = this;
             if (this.$el.is(":visible")) {
-                this.$el.find("iframe").height($(window).innerHeight() - this.$el.position().top - 50).width(this.$el.innerWidth() - 1);
+                this.$el.find("iframe").height($(window).innerHeight() - this.$el.position().top - 40).width(this.$el.innerWidth() - 1);
                 _.defer(function secondHeightResize()
                 {
-                    currentView.$el.find("iframe").height($(window).innerHeight() - currentView.$el.position().top - 50);
+                    currentView.$el.find("iframe").height($(window).innerHeight() - currentView.$el.position().top - 40);
                 }, 50);
             }
         },

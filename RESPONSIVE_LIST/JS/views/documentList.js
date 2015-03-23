@@ -93,6 +93,7 @@ define([
             if (!document.state) {
                 document.state = null;
             }
+            _.defaults(document, { "initid" : "", "title" : "", "state" : "", "icon" : ""});
             this.$el.find("[href=#"+document.initid+"]").replaceWith(template.document(document));
         },
 
