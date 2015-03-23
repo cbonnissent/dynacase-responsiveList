@@ -28,6 +28,36 @@ function main(Action &$action)
         );
     }
 
+    $injectJS = \ApplicationParameterManager::getParameterValue(
+        \ApplicationParameterManager::CURRENT_APPLICATION, "INJECT_JS"
+    );
+
+    $injectJS = json_decode($injectJS, true);
+
+    if (is_array($injectJS)) {
+        foreach($injectJS as $currentJS) {
+            $action->parent->addJsRef(
+                $currentJS."?ws=" . $version
+            );
+        }
+    }
+
+    $action->parent->AddCssRef("css/rsp/main.css?ws=" . $version);
+
+    $injectCSS = \ApplicationParameterManager::getParameterValue(
+        \ApplicationParameterManager::CURRENT_APPLICATION, "INJECT_CSS"
+    );
+
+    $injectCSS = json_decode($injectCSS, true);
+
+    if (is_array($injectCSS)) {
+        foreach ($injectCSS as $currentCSS) {
+            $action->parent->addCssRef(
+                $currentCSS . "?ws=" . $version
+            );
+        }
+    }
+
 
     //SearchList
     $searchList = new \SearchDoc();
@@ -67,8 +97,6 @@ function main(Action &$action)
         $familyList
     );
     $familyListFormatter->useDefaultProperties();
-
-    $action->parent->AddCssRef("css/rsp/main.css?ws=" . $version);
 
     $searchList = array_map(
         function ($currentSearch) {
