@@ -196,7 +196,7 @@ define([
         {
             var $elements = this.$el.find(".documentsList__documents__list__elements:visible");
             if ($elements.length > 0) {
-                $elements.height($(window).innerHeight() - $elements.position().top - 45);
+                $elements.height($(window).innerHeight() - $elements.position().top - 40);
             }
             if (noReload !== true && this.currentSelectedModel) {
                 this._needToLoadMore(this.currentSelectedModel, this.currentSelectedModel.get("associatedDocumentList"));
