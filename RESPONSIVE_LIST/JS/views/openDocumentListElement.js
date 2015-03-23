@@ -23,9 +23,7 @@ define([
         },
 
         initialize : function opde_initialize() {
-            this.listenTo(this.model, "change:title", this.render);
-            this.listenTo(this.model, "change:id", this.render);
-            this.listenTo(this.model, "change:icon", this.render);
+            this.listenTo(this.model, "change", this.render);
             this.listenTo(this.model, "change:selected", this.indicateSelected);
             this.listenTo(this.model, "destroy", this.delete);
         },
