@@ -24,7 +24,7 @@ define([
 
         render: function dw_render()
         {
-            var currentView = this;
+            var currentView = this, afterLoaded = _.bind(this.indicateSelected, this);
             this.$el.document("fetchDocument", {
                 "initid": this.model.id,
                 "viewId": this.model.get("viewId"),
@@ -40,7 +40,7 @@ define([
                     currentView.model.trigger("reloadDocument", document);
                 }
                 $(this).find("header").hide();
-                currentView.$el.show();
+                afterLoaded();
             });
             this.$el.document("addEvent", "beforeClose", function (event, document, newDocument)
             {
