@@ -39,6 +39,7 @@ define([
                 if (document.title) {
                     currentView.model.trigger("reloadDocument", document);
                 }
+                currentView.$el.find("iframe").contents().find("header").hide();
                 currentView.$el.show();
             });
             this.$el.document("addEvent", "beforeClose", function (event, document, newDocument)
