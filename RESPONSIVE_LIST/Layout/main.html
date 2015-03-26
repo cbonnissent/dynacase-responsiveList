@@ -26,12 +26,21 @@
     </div>
     <div class="row content" style="display : none;">
         <div class="row">
-            <div class="col-xs-12 bg-primary">
-                <h4 class="applicationName pull-left">[text_header]</h4>
-                <button type="button" class="pull-right btn btn-default unlog--button">
-                    <span class="glyphicon glyphicon glyphicon-log-out"></span>
-                </button>
-                <h4 class="pull-right hidden-xs"> <span class="glyphicon glyphicon-user"></span>[username]</h4>
+            <div class="col-xs-12 documentList__header">
+
+                <h4 class="applicationName pull-left">
+                  <img class="documentList__header__icon" src="Images/logoanakeen.png">
+                  [text_header]
+                  </h4>
+                <h5 class="documentList__header__user pull-right hidden-xs">
+                  <span class="documentList__header__user__icon">
+                    <i class="fa fa-user"></i>
+                  </span>
+                  [username]
+                  <span class="unlog--button documentList__header__logout__icon">
+                    <i class="fa fa-power-off"></i>
+                  </span>
+              </h5>
             </div>
         </div>
         <div class="documentsList">
@@ -39,9 +48,10 @@
                 <div class="documentsList__searchList">
                 </div>
                 <div class="documentsList__switch__wrapper">
-                    <button type="button" class="btn btn-default btn-block documentList__switch">
-                        <span class="glyphicon glyphicon-arrow-left"></span>
-                    </button>
+                    <span class="documentList__switch pull-right fa-stack">
+                      <i class="fa fa-file-o fa-stack-2x"></i>
+                      <i class="fa fa-chevron-right fa-stack-1x"></i>
+                    </span>
                 </div>
             </div>
             <div class="documentsList__documents">

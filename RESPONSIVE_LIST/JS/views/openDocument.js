@@ -13,7 +13,7 @@ define([
     var template = {
         "global": _.template('<ul class="nav nav-tabs documentList">' +
         '   <li class="openDocuments__openDocumentList visible-xs visible-sm">' +
-        '       <button class="btn btn-default"><span class="glyphicon glyphicon-menu-hamburger"></span></button>' +
+        '       <i class="fa fa-2x fa-bars"></i>' +
         '   </li>' +
         '   <li class="openDocuments__createDocument">' +
         '       <div class="btn-group" title="Créer un document">' +
@@ -25,13 +25,16 @@ define([
         '           </ul>' +
         '       </div>' +
         '   </li>' +
+        '   <li class="openDocuments__openDocumentCloseAll pull-right">' +
+        '      <i class="fa fa-times-circle-o"></i>' +
+        '   </li>' +
         '</ul><div class="documentsWrapper"></div>'),
         "families" : _.template('<% _.each(families, function(currentFamily) { %>' +
-        '<li>' +
-        '   <a class="openDocuments__createDocument__familyElement" href="#<%- currentFamily.initid %>" data-initid="<%- currentFamily.initid %>">' +
-        '       <img src="<%- currentFamily.icon %>" class="img-circle documentElement__icon"><%- currentFamily.title %>' +
-        '   </a>' +
-        '</li>' +
+        '   <li>' +
+        '       <a class="openDocuments__createDocument__familyElement" href="#<%- currentFamily.initid %>" data-initid="<%- currentFamily.initid %>">' +
+        '          <img src="<%- currentFamily.icon %>" class="img-circle documentElement__icon"><%- currentFamily.title %>' +
+        '      </a>' +
+        '    </li>' +
         ' <% }); %>')
     };
 

@@ -9,20 +9,24 @@ define([
 
     var template = {
         "global": _.template('<div class="documentsList__documents__list__element <%- id %>">' +
-        '   <div class="bg-info documentsList__documents__list__element__nbResult clearfix">' +
-        '       <span class="documentsList__documents__list__element__nbResult__container"></span>' +
+        '   <div class="documentsList__documents__list__element__nbResult clearfix">' +
+        '       <span class="documentsList__documents__list__element__nbResult__container">Mise à jour...</span>' +
         '       <button class="btn btn-link pull-right documentsList__documents__list__element__reload"><span class="glyphicon glyphicon-repeat pull-right" aria-hidden="true"></span></button>' +
         '   </div>' +
         '   <div class="documentsList__documents__list__elements">' +
         '       <div class="list-group"></div>' +
-        '       <div class="documentsList__documents__list__elements__loading">Loading...</div>' +
+        '       <div class="documentsList__documents__list__elements__loading text-center">' +
+        '         <i class="fa fa-circle-o-notch fa-spin"></i>' +
+        '       </div>' +
         '   </div>' +
         '</div>'),
         "document": _.template('<a href="#<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>" class="list-group-item documentElement clearfix"> ' +
-        '   <img src="<%- icon %>" class="img-circle documentElement__icon" />' +
-        '   <%- title %>' +
+        '   <div class="documentElement__title">' +
+        '     <img src="<%- icon %>" class="img-circle documentElement__icon" />' +
+        '     <%- title %>' +
+        '   </div>' +
         '   <% if (state) { %> ' +
-        '                    <div>'+
+        '                    <div class="documentElement__state__zone clearfix">'+
         '                   <span class="label label-default pull-right documentElement__state" ' +
         '                           style="background-color : <%- state.color %>;' +
             //compute the complementary grey
