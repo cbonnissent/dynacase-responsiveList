@@ -13,7 +13,12 @@ define([
             state: null,
             viewId : "!defaultConsultation",
             "title" : "Chargement...",
-            "icon" : false
+            "icon" : false,
+            "dateSelected" : 0
+        },
+
+        initialize : function () {
+            this.set("dateSelected", Date.now());
         },
 
         isNew: function ()

@@ -6,7 +6,7 @@ define([
 
     "use strict";
 
-    var template = _.template('<a class="documentTab" href="#<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>">' +
+    var template = _.template('<a class="documentTab" href="?app=DOCUMENT&id=<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>">' +
     '<span class="documentTab__text">' +
     '  <% if (icon) { %><img src="<%- icon %>" class="img-circle documentElement__icon" /> <% } %> <%- title %>' +
     '</span>' +
@@ -16,6 +16,7 @@ define([
     return Backbone.View.extend({
 
         tagName : "li",
+        className : "openDocuments__tab",
 
         events : {
             "click" : "selected",
@@ -28,15 +29,20 @@ define([
             this.listenTo(this.model, "destroy", this.delete);
         },
 
-        render : function opde__render() {
+        render : function opde__render(options) {
+            options = options || {};
             this.$el.empty().append(template(this.model.toJSON()));
             this.$el.attr("title", this.model.get("title"));
+            if (options.hidden) {
+                this.$el.addClass("documentTab__hidden clearfix");
+            }
+            this.indicateSelected();
             return this;
         },
 
         selected : function opde_selected(event) {
             event.preventDefault();
-            this.model.trigger("selected", this.model);
+            this.model.trigger("selected", this.model, this.$el.is(".documentTab__hidden"));
         },
 
         indicateSelected : function opde__indicateSelected() {

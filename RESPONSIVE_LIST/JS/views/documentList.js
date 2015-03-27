@@ -16,11 +16,11 @@ define([
         '   <div class="documentsList__documents__list__elements">' +
         '       <div class="list-group"></div>' +
         '       <div class="documentsList__documents__list__elements__loading text-center">' +
-        '         <i class="fa fa-circle-o-notch fa-spin"></i>' +
+        '         <span class="fa fa-circle-o-notch fa-spin"></span>' +
         '       </div>' +
         '   </div>' +
         '</div>'),
-        "document": _.template('<a href="#<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>" class="list-group-item documentElement clearfix"> ' +
+        "document": _.template('<a href="?app=DOCUMENT&id=<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>" class="list-group-item documentElement clearfix"> ' +
         '   <div class="documentElement__title">' +
         '     <img src="<%- icon %>" class="img-circle documentElement__icon" />' +
         '     <%- title %>' +
@@ -199,9 +199,10 @@ define([
 
         _resize: function _resize(noReload)
         {
-            var $elements = this.$el.find(".documentsList__documents__list__elements:visible");
+            var $elements = this.$el.find(".documentsList__documents__list__elements:visible"), top;
             if ($elements.length > 0) {
-                $elements.height($(window).innerHeight() - $elements.position().top - 40);
+                top = $elements[0].getBoundingClientRect().top;
+                $elements.height($(window).innerHeight() - top - 10);
             }
             if (noReload !== true && this.currentSelectedModel) {
                 this._needToLoadMore(this.currentSelectedModel, this.currentSelectedModel.get("associatedDocumentList"));

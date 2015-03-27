@@ -84,12 +84,16 @@ define([
 
         _resize: function opde_resize()
         {
-            var currentView = this;
+            var currentView = this, getTop = function (element)
+            {
+                element = element[0];
+                return element.getBoundingClientRect().top + 5;
+            };
             if (this.$el.is(":visible")) {
-                this.$el.find("iframe").height($(window).innerHeight() - this.$el.position().top - 40).width(this.$el.innerWidth() - 1);
+                this.$el.find("iframe").height($(window).innerHeight() - getTop(this.$el)).width(this.$el.innerWidth() - 1);
                 _.defer(function secondHeightResize()
                 {
-                    currentView.$el.find("iframe").height($(window).innerHeight() - currentView.$el.position().top - 40);
+                    currentView.$el.find("iframe").height($(window).innerHeight() - getTop(currentView.$el));
                 }, 50);
             }
         },

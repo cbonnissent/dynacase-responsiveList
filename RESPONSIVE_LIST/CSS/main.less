@@ -1,4 +1,7 @@
 @import "../../STYLE/custom-less-variable.d/global_variables.less";
+@import "../../lib/font-awesome/less/font-awesome";
+
+@fa-font-path: "../../lib/font-awesome/fonts";
 @import "../../lib/bootstrap/3/less/mixins.less";
 // Reset and dependencies
 @import "../../lib/bootstrap/3/less/normalize.less";
@@ -22,6 +25,10 @@
 @import "../../lib/bootstrap/3/less/responsive-utilities.less";
 
 @grid-gutter-width: 0;
+
+body {
+  overflow: hidden;
+}
 
 .loading__wrapper, .error__wrapper {
   text-align: center;
@@ -57,6 +64,7 @@
 }
 
 .unlog--button {
+  padding: 0;
   margin: 0.25em 0.15em 0 1em;
 }
 
@@ -65,7 +73,7 @@
 }
 
 .documentsList__documents__list__element__nbResult {
-  position:relative;
+  position: relative;
   padding: 0.5em;
   min-height: 34px;
 }
@@ -109,7 +117,7 @@
 }
 
 .openDocuments {
-//  .make-xs-column(12);
+  //  .make-xs-column(12);
   .make-sm-column(12);
   .make-md-column(9);
   .make-lg-column(9);
@@ -121,8 +129,12 @@
   height: 100%;
 }
 
+.openDocuments__tab {
+  position: relative;
+}
+
 .documentTab {
-  width: 15em;
+  width: 200px;
   height: 2em;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -131,7 +143,15 @@
 
 .documentTab, li > a.documentTab {
   padding: 0.2em 1em 0.2em 0.4em;
-  border: 1px solid @gray-lighter;
+  background-color: rgb(226, 226, 226);
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.documentTab__hidden, .documentTab__hidden a.documentTab {
+  background-color: white;
+  border: none;
 }
 
 .documentTab__remove {
@@ -140,20 +160,21 @@
   right: 0.2em;
 }
 
-/*li.active .documentTab__remove {
-  color: white;
-  .opacity(0.75);
-  &:hover,
-  &:focus {
-    color: white;
-    .opacity(1);
-  }
-}*/
-
-.openDocuments__openDocumentList, .openDocuments__createDocument {
+.openDocuments__createDocument {
   .btn {
     padding: 3px 12px;
   }
+}
+
+.openDocuments__openDocumentList {
+  .btn {
+    padding: 0;
+    font-size: 0.9em;
+  }
+  span {
+    color: rgb(38, 58, 89);
+  }
+  margin-left: 5px;
 }
 
 .hiddenLittle {
@@ -161,3 +182,173 @@
     .responsive-invisibility();
   }
 }
+
+/* General */
+.btn {
+  border-radius: 1px;
+}
+
+.openDocuments,
+.documentsList {
+  background-color: #CAD5DD;
+}
+
+/*
+ * Header
+ */
+.documentList__header {
+  background-color: #263A59;
+  color: #fff;
+}
+
+.documentList__header__icon {
+  height: 20px;
+}
+
+.documentList__header__user__icon {
+  padding-right: 5px;
+}
+
+.documentList__header__logout__icon {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.documentList__header__user {
+  padding-right: 10px;
+  line-height: 1.5em;
+}
+
+/* Left list */
+.documentsList {
+  padding: 10px;
+}
+
+.documentsList__searchList,
+.documentsList__documents__search__form > .input-group {
+  background-color: rgb(233, 239, 243);
+}
+
+.documentsList__searchList__select,
+.documentsList__documents__search__form > .input-group {
+  border: 1px solid #A2A3A5;
+}
+
+.documentsList__searchList__select {
+  background-color: inherit;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+.documentList__switch {
+  padding: 0;
+  font-size: 12px;
+  color: rgb(38, 58, 89);
+}
+
+.documentsList__documents__search {
+  border-radius: 1px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+  padding-bottom: 5px;
+}
+
+.documentsList__documents__search__keyWord,
+.search__button {
+  background-color: inherit;
+  border: 0;
+}
+
+.documentsList__documents__search__keyWord {
+  border-right: 1px solid #A2A3A5;
+}
+
+.documentsList__documents__list {
+  padding-top: 10px;
+}
+
+.documentsList__documents__list__element__nbResult {
+  border: 0 solid #ccc;
+  border-bottom-width: 1px;
+  margin: 0;
+  padding: 5px 0 5px 0;
+  min-height: initial;
+}
+
+.documentsList__documents__list__element__reload {
+  min-height: 34px;
+  top: 0;
+}
+
+.documentElement {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e8e8e8 #ccc #ccc #e8e8e8;
+  margin-bottom: 0;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.documentElement__icon {
+  width: initial;
+  height: 1.6em;
+  border-radius: 0;
+  padding: 0;
+  border: 0;
+}
+
+.documentElement__state {
+  text-align: left;
+  width: 7em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: normal;
+  position: initial;
+  top: 0;
+  border: 1px solid #ccc;
+  margin-bottom: 0.3em;
+  margin-right: 5px;
+  padding: 2px 5px;
+  border-radius: 0;
+}
+
+.documentElement__title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+}
+
+.documentElement__state__zone {
+  margin-top: -0.5em;
+}
+
+/*
+ * documents tabs
+ */
+
+.openDocuments {
+  padding-top: 5px;
+  //border-bottom: 1px solid #ddd; artefact when no documents
+}
+
+.openDocuments__createDocument {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+.documentsWrapper {
+  background-color: #fff;
+  padding-top: 5px;
+}
+
+.openDocuments__openDocumentCloseAll {
+  line-height: 1.8em;
+  margin-right: 5px;
+  color: rgb(38, 58, 89);
+  .btn {
+    padding: 0;
+  }
+}
+

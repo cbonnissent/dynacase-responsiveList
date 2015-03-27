@@ -9,15 +9,20 @@ define([
     return Backbone.Collection.extend({
         "model": model,
 
+
         initialize : function odc__initialize() {
             this.listenTo(this, "selected", this.propagateSelected);
             this.listenTo(this, "destroy", this.selectAnotherOne);
         },
 
-        propagateSelected : function odc__selected(model) {
+        propagateSelected : function odc__selected(model, isHidden) {
             this.each(function odc__isSelected(currentModel) {
                 currentModel.set("selected", model.id === currentModel.id);
+                if (model.id === currentModel.id && isHidden) {
+                    currentModel.set("dateSelected", Date.now());
+                }
             });
+            this.trigger("orderChanged");
         },
 
         selectAnotherOne : function odc_selectAnotherOne(model, collection, options) {
