@@ -12,6 +12,21 @@ define([
 
     var template = {
         "global": _.template('<ul class="nav nav-tabs documentList">' +
+        '   <li class="openDocuments__openDocumentCloseAll pull-right" title="Fermer tous les documents">' +
+        '       <button type="button" class="btn btn-link"> ' +
+        '           <span class="fa fa-times-circle-o"></span>' +
+        '       </button>' +
+        '   </li>' +
+        '   <li class="openDocuments__more pull-right">' +
+        '       <div class="btn-group" title="Plus de documents">' +
+        '           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' +
+        '               <span class="fa fa-bars"></span>' +
+        '               +<span class="openDocuments__more__number"></span> <span class="caret"></span>' +
+        '           </button>' +
+        '           <ul class="dropdown-menu pull-right openDocuments__more__documents" role="menu">' +
+        '           </ul>' +
+        '       </div>' +
+        '   </li>' +
         '   <li class="openDocuments__openDocumentList visible-xs visible-sm">' +
         '       <button type="button" class="btn btn-link">' +
         '           <span class="fa fa-2x fa-bars"></span>' +
@@ -24,20 +39,6 @@ define([
         '               Nouveau <span class="caret"></span>' +
         '           </button>' +
         '           <ul class="dropdown-menu openDocuments__createDocument__families" role="menu">' +
-        '           </ul>' +
-        '       </div>' +
-        '   </li>' +
-        '   <li class="openDocuments__openDocumentCloseAll pull-right" title="Fermer tous les documents">' +
-        '       <button type="button" class="btn btn-link"> ' +
-        '           <span class="fa fa-times-circle-o"></span>' +
-        '       </button>' +
-        '   </li>' +
-        '   <li class="openDocuments__more pull-right">' +
-        '       <div class="btn-group" title="Plus de documents">' +
-        '           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' +
-        '               <span class="caret"></span> <span class="openDocuments__more__number"></span> <span class="fa fa-bars"></span>' +
-        '           </button>' +
-        '           <ul class="dropdown-menu pull-right openDocuments__more__documents" role="menu">' +
         '           </ul>' +
         '       </div>' +
         '   </li>' +
