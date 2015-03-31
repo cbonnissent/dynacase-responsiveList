@@ -1,7 +1,8 @@
 define([
+    "underscore",
     "rsp/models/document",
     "backbone"
-], function (model)
+], function (_, model)
 {
 
     "use strict";
@@ -9,9 +10,13 @@ define([
     return Backbone.Collection.extend({
         "model": model,
 
+        comparator : "dataSelected",
+
 
         initialize : function odc__initialize() {
             this.listenTo(this, "selected", this.propagateSelected);
+            this.listenTo(this, "selectPrevious", this.selectPrevious);
+            this.listenTo(this, "selectNext", this.selectNext);
             this.listenTo(this, "destroy", this.selectAnotherOne);
         },
 
@@ -23,6 +28,24 @@ define([
                 }
             });
             this.trigger("orderChanged");
+            this.sort();
+        },
+
+        selectPrevious : function odc__selectPrevious(model) {
+            var list = this.sortBy(function odc_comparator(model1)
+            {
+                return -model1.get("dateSelected");
+            });
+            this.propagateSelected(list[_.indexOf(list, model) - 1]);
+        },
+
+        selectNext: function odc__selectNext(model)
+        {
+            var list = this.sortBy(function odc_comparator(model1)
+            {
+                return -model1.get("dateSelected");
+            });
+            this.propagateSelected(list[_.indexOf(list, model) + 1]);
         },
 
         selectAnotherOne : function odc_selectAnotherOne(model, collection, options) {

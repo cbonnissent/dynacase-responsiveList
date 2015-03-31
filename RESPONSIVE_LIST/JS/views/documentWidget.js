@@ -1,9 +1,10 @@
 define([
     "jquery",
     "underscore",
+    "rsp/hammer",
     "dcpDocument/document",
     "backbone"
-], function ($, _)
+], function ($, _, Hammer)
 {
 
     "use strict";
@@ -68,6 +69,7 @@ define([
                 currentView.model.trigger("removeDocument", document);
             });
             this.setFrameName();
+            this.setSwipeEvent();
             return this;
         },
 
@@ -107,6 +109,27 @@ define([
         {
             var name = "document_" + this.model.get("initid") + "_" + this.model.get("title");
             this.$el.find("iframe").attr("name", name);
+        },
+
+        setSwipeEvent: function opde_setSwipeEvent()
+        {
+            var iframe = this.$el.find("iframe"), currentView = this;
+            iframe.on("load", function addHammer() {
+                var iframeBody = this.contentWindow.document.body;
+                iframeBody.style.position = "absolute";
+                iframeBody.style.top = 0;
+                iframeBody.style.left = 0;
+                iframeBody.style.right = 0;
+                iframeBody.style.bottom = 0;
+                Hammer(iframeBody).on("swipeleft", function (event)
+                {
+                    currentView.model.collection.trigger("selectNext", currentView.model);
+                });
+                Hammer(iframeBody).on("swiperight", function (event)
+                {
+                    currentView.model.collection.trigger("selectPrevious", currentView.model);
+                });
+            }).trigger("load");
         }
 
     });

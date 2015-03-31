@@ -36,6 +36,7 @@ require(["jquery",
 
     $(document).ready(function rsp_ready()
     {
+
         window.dcp.views.searches = new ViewSearches({
             el: $(".documentsList__searchList"),
             collection: window.dcp.collections.searches
@@ -81,6 +82,8 @@ require(["jquery",
         window.dcp.views.documentList.render();
         window.dcp.collections.searches.add(window.dcp.search_list);
         window.dcp.views.searches.displayDocumentList();
+
+
         $(".loading--initial").hide();
         $(".content").show();
         $(window).trigger("resize");

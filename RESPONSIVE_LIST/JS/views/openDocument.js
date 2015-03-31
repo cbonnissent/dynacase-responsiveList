@@ -17,7 +17,7 @@ define([
         '           <span class="fa fa-times-circle-o"></span>' +
         '       </button>' +
         '   </li>' +
-        '   <li class="openDocuments__more pull-right">' +
+        '   <li class="openDocuments__more pull-right" style="visibility: hidden;">' +
         '       <div class="btn-group" title="Plus de documents">' +
         '           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' +
         '               <span class="fa fa-bars"></span>' +
@@ -145,12 +145,12 @@ define([
                 }
                 nb += 1;
             });
-            if (nb > nbTotal) {
+            if (nb !== 0 && nb > nbTotal) {
                 this.$(".openDocuments__more").css("visibility", "visible");
+                this.$(".openDocuments__more__number").text(nb - nbTotal);
             } else {
                 this.$(".openDocuments__more").css("visibility", "hidden");
             }
-            this.$(".openDocuments__more__number").text(nb - nbTotal);
         },
 
         closeAll: function opd_closeAll()
