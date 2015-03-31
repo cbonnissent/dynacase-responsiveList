@@ -86,11 +86,13 @@ define([
         },
 
         reloadDocument : function dl_reloadDocument(document) {
+            var templateElement;
             if (!document.state) {
                 document.state = null;
             }
             _.defaults(document, { "initid" : "", "title" : "", "state" : "", "icon" : ""});
-            this.$el.find("[href=#"+document.initid+"]").replaceWith(template.document(document));
+            templateElement = template.document[document.family.name] ? template.document[document.family.name] : template.document["#all#"];
+            this.$el.find("[href=#"+document.initid+"]").replaceWith(templateElement(document));
         },
 
         removeDocument: function dl_removeDocument()
