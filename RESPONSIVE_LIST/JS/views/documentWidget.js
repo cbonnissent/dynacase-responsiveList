@@ -78,6 +78,7 @@ define([
             if (this.model.get("selected")) {
                 this.$el.show();
                 window.document.title = this.model.get("title");
+                window.documentSelected = this.$el;
                 this._resize();
             } else {
                 this.$el.hide();
@@ -113,8 +114,8 @@ define([
 
         setSwipeEvent: function opde_setSwipeEvent()
         {
-            var iframe = this.$el.find("iframe"), currentView = this;
-            iframe.on("load", function addHammer() {
+            var iframe = this.$el.find("iframe"), currentView = this, addHammer = _.bind(function addHammer()
+            {
                 var iframeBody = this.contentWindow.document.body;
                 iframeBody.style.position = "absolute";
                 iframeBody.style.top = 0;
@@ -129,7 +130,9 @@ define([
                 {
                     currentView.model.collection.trigger("selectPrevious", currentView.model);
                 });
-            }).trigger("load");
+            }, iframe[0]);
+            iframe.on("load", addHammer);
+            addHammer();
         }
 
     });
