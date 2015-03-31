@@ -28,6 +28,12 @@ $action_desc = array(
         "function" => "main",
         "root" => "Y",
         "acl" => "BASIC"
+    ),
+    array(
+        "name" => "CONCAT_TEMPLATES",
+        "short_name" => N_("RSPL:CONCAT_TEMPLATES"),
+        "script" => "action.concat_templates.php",
+        "function" => "concat_templates",
     )
 );
 

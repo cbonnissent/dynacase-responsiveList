@@ -52,13 +52,17 @@ class ListDocument extends DocumentCollection
             && !empty($this->contentParameters["keyword"])
         ) {
             $searchDoc->addGeneralFilter(
-                "*".$this->contentParameters["keyword"]."*",
+                "*" . $this->contentParameters["keyword"] . "*",
                 true
             );
         }
         $return["resultMax"] = $searchDoc->onlyCount();
-        $return["uri"] = $this->generateURL(sprintf("listDocument/%s",
-            $this->_collection->getPropertyValue("id")));
+        $return["uri"] = $this->generateURL(
+            sprintf(
+                "listDocument/%s",
+                $this->_collection->getPropertyValue("id")
+            )
+        );
         unset($return["properties"]);
         return $return;
     }
@@ -120,14 +124,37 @@ class ListDocument extends DocumentCollection
     protected function prepareSearchDoc()
     {
         $this->_searchDoc = new \SearchDoc("");
-        $this->_searchDoc->useCollection($this->_collection->getPropertyValue("id"));
+        $this->_searchDoc->useCollection(
+            $this->_collection->getPropertyValue("id")
+        );
         $this->_searchDoc->setObjectReturn();
-        if (isset($this->contentParameters["keyword"]) && !empty($this->contentParameters["keyword"])) {
+        if (isset($this->contentParameters["keyword"])
+            && !empty($this->contentParameters["keyword"])
+        ) {
             $this->_searchDoc->addGeneralFilter(
-                "*".$this->contentParameters["keyword"]."*",
+                "*" . $this->contentParameters["keyword"] . "*",
                 true
             );
         }
+    }
+
+    protected function getAttributeFields()
+    {
+        $prefix = self::GET_ATTRIBUTE;
+        $fields = $this->getFields();
+        if ($this->hasFields(self::GET_ATTRIBUTES)
+            || $this->hasFields(
+                self::GET_ATTRIBUTE
+            )
+        ) {
+            $tmpDoc = new_Doc(
+                "", $this->_collection->getAttributeValue("se_famid")
+            );
+            return DocumentUtils::getAttributesFields(
+                $tmpDoc, $prefix, $fields
+            );
+        }
+        return array();
     }
 
 }

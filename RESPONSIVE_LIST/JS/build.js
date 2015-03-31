@@ -7,7 +7,8 @@
         "jquery": "empty:",
         "underscore": "empty:",
         "backbone": "empty:",
-        "bootstrap": "empty:"
+        "bootstrap": "empty:",
+        "rsp/views/documentList" : "empty:"
     },
     generateSourceMaps: true,
     preserveLicenseComments: false,

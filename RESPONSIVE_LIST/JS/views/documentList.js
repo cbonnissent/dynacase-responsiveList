@@ -1,8 +1,9 @@
 define([
     "jquery",
     "underscore",
+    "text!rspTemplate/global.json",
     "backbone"
-], function ($, _)
+], function ($, _, templates)
 {
 
     "use strict";
@@ -20,21 +21,7 @@ define([
         '       </div>' +
         '   </div>' +
         '</div>'),
-        "document": _.template('<a href="?app=DOCUMENT&id=<%- initid %>" data-id="<%- initid %>" data-title="<%- title %>" class="list-group-item documentElement clearfix"> ' +
-        '   <div class="documentElement__title">' +
-        '     <img src="<%- icon %>" class="img-circle documentElement__icon" />' +
-        '     <%- title %>' +
-        '   </div>' +
-        '   <% if (state) { %> ' +
-        '                    <div class="documentElement__state__zone clearfix">'+
-        '                   <span class="label label-default pull-right documentElement__state" ' +
-        '                           style="background-color : <%- state.color %>;' +
-            //compute the complementary grey
-        '                           color : #<%- (\'000000\' + ((\'0xffffff\' ^ state.color.replace("#", "0x")).toString(16))).slice(-6) %>;">' +
-        '                           <%- state.displayValue %>' +
-        '                   </span></div> ' +
-        '   <% } %>' +
-        '</a>')
+        "document" : {}
     };
 
     return Backbone.View.extend({
@@ -51,6 +38,11 @@ define([
             if (!options.collection) {
                 throw new Error("You need to associate the document list view with a collection");
             }
+            templates = JSON.parse(templates);
+            _.each(templates, function(templateElement, key) {
+                template.document[key] = _.template(templateElement);
+            });
+
             this.collection = options.collection;
             this.openDocuments = options.openDocuments;
             this.listenTo(this.collection, "selected", this.displaySelected);
@@ -137,9 +129,10 @@ define([
 
         _addOne: function dl_addOne(model, list, currentDocument)
         {
-            var $currentDiv = this._getCurrentDiv(model);
+            var $currentDiv = this._getCurrentDiv(model), templateElement, document = currentDocument.toJSON();
+            templateElement = template.document[document.family.name] ? template.document[document.family.name] : template.document["#all#"] ;
             if ($currentDiv) {
-                $currentDiv.find(".list-group").append(template.document(currentDocument.toJSON()));
+                $currentDiv.find(".list-group").append(templateElement(document));
             }
         },
 

@@ -28,7 +28,9 @@ define([
 
         parse: function (response)
         {
-            return response.properties;
+            var values = response.properties;
+            values.attributes = response.attributes;
+            return values;
         }
     });
 });

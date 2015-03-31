@@ -6,7 +6,7 @@ define([
 {
     "use strict";
 
-    var urlTemplate = _.template("<%= urlBase %>?slice=<%= slice %>&offset=<%= offset %>&keyword=<%= keyWord %>");
+    var urlTemplate = _.template("<%= urlBase %>?slice=<%= slice %>&offset=<%= offset %>&keyword=<%= keyWord %>&fields=document.properties.all,document.attributes");
 
     return Backbone.Collection.extend({
         "model": model,
