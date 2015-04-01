@@ -33,12 +33,10 @@ define([
             });
             this.$el.document("addEvent", "ready", function (event, document)
             {
-                currentView.model.set("initid", document.initid);
-                currentView.model.set("title", document.title || "");
-                currentView.model.set("viewId", document.viewId);
-                currentView.model.set("icon", document.icon);
+                currentView.model.set(document);
+                currentView.model.set("attributes", this.documentController("getValues"));
                 if (document.title) {
-                    currentView.model.trigger("reloadDocument", document);
+                    currentView.model.trigger("reloadDocument", currentView.model.toJSON());
                 }
                 $(this).find("header").hide();
                 afterLoaded();

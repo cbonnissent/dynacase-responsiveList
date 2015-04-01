@@ -92,13 +92,13 @@ define([
             }
             _.defaults(document, { "initid" : "", "title" : "", "state" : "", "icon" : ""});
             templateElement = template.document[document.family.name] ? template.document[document.family.name] : template.document["#all#"];
-            this.$el.find("[href=#"+document.initid+"]").replaceWith(templateElement(document));
+            this.$el.find("[data-id="+document.initid+"]").replaceWith(templateElement(document));
         },
 
         removeDocument: function dl_removeDocument()
         {
             this.reloadSelected();
-            this.$el.find("[href=#" + document.initid + "]").remove();
+            this.$el.find("[data-id=" + document.initid + "]").remove();
         },
 
         updateKeyWord: function dl_updateKeyWord(event)
