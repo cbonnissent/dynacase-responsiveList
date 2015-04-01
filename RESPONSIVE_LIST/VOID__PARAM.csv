@@ -10,6 +10,6 @@ DOC;VOID;VOID_DOCUMENT;;;
 ;;;;;
 //;Father;Title;Id;Classe;Logical Name
 BEGIN;;VOID;;;VOID
-ICON;void.png;;;;
+ICON;1x1.gif;;;;
 DFLDID;DIR_VOID;;;;
 END;;;;;

@@ -13,4 +13,8 @@ Class VOID extends \Dcp\Family\Document implements \Dcp\Ui\IRenderConfigAccess
         return new void_view($this);
     }
 
+    public function getCustomTitle() {
+        return "Chargement...";
+    }
+
 }
