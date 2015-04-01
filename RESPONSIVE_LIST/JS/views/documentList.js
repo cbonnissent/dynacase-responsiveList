@@ -81,7 +81,11 @@ define([
         },
 
         reloadAll : function dl_reloadAll() {
-            this.reloadSelected();
+            try {
+                this.reloadSelected();
+            } catch(e) {
+                console.log(e);
+            }
             this.$el(".documentsList__documents__list__element:hidden").remove();
         },
 
