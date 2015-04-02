@@ -35,7 +35,7 @@ define([
             {
                 currentView.model.set(document);
                 currentView.model.set("attributes", this.documentController("getValues"));
-                if (document.title) {
+                if (!document.name || document.name !== "VOID_DOCUMENT") {
                     currentView.model.trigger("reloadDocument", currentView.model.toJSON());
                 }
                 $(this).find("header").hide();
