@@ -3,8 +3,8 @@
   "name": "Dynacase",
   "icons": [
     {
-      "src": "../Images/logodynacase.png",
-      "sizes": "100x136",
+      "src": "../Images/DDUI-Appli.png",
+      "sizes": "128x128",
       "type": "image/png"
     }
   ],
