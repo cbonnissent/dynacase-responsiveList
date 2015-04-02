@@ -139,8 +139,10 @@ define([
             {
                 var viewList = new ViewOpenDocumentListElement({model: model});
                 if (nb < nbTotal) {
+                    model.set("visibileInList", true);
                     $targetVisible.append(viewList.render().$el);
                 } else {
+                    model.set("visibileInList", false);
                     $targetOther.append(viewList.render({hidden : true}).$el);
                 }
                 nb += 1;

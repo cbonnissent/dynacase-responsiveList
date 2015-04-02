@@ -20,10 +20,10 @@ define([
             this.listenTo(this, "destroy", this.selectAnotherOne);
         },
 
-        propagateSelected : function odc__selected(model, isHidden) {
+        propagateSelected : function odc__selected(model) {
             this.each(function odc__isSelected(currentModel) {
                 currentModel.set("selected", model.id === currentModel.id);
-                if (model.id === currentModel.id && isHidden) {
+                if (model.id === currentModel.id && !currentModel.get("visibileInList")) {
                     currentModel.set("dateSelected", Date.now());
                 }
             });
