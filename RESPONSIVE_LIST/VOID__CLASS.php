@@ -8,6 +8,8 @@ Class VOID extends \Dcp\Family\Document implements \Dcp\Ui\IRenderConfigAccess
 {
 
 
+    public $defa
+
     public function getRenderConfig($mode)
     {
         return new void_view($this);

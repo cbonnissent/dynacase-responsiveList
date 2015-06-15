@@ -29,9 +29,10 @@ define([
             this.$el.document("fetchDocument", {
                 "initid": this.model.id,
                 "viewId": this.model.get("viewId"),
+                "revision" : -1,
                 withoutResize: true
             });
-            this.$el.document("addEvent", "ready", function (event, document)
+            this.$el.document("addEventListener", "ready", function (event, document)
             {
                 currentView.model.set(document);
                 currentView.model.set("attributes", this.documentController("getValues"));
@@ -41,7 +42,7 @@ define([
                 $(this).find("header").hide();
                 afterLoaded();
             });
-            this.$el.document("addEvent", "beforeClose", function (event, document, newDocument)
+            this.$el.document("addEventListener", "beforeClose", function (event, document, newDocument)
             {
                 var currentDocument = currentView.model.collection.get(newDocument.initid);
                 if (parseInt(newDocument.initid, 10) === parseInt(currentView.model.get("initid"), 10)) {
@@ -55,14 +56,14 @@ define([
                     currentView.model.collection.add({initid: newDocument.initid, title: "Chargement"});
                 }
             });
-            this.$el.document("addEvent", "afterSave", function (event, document, oldDocument)
+            this.$el.document("addEventListener", "afterSave", function (event, document, oldDocument)
             {
                 // if oldDocument.id => 0 afterCreation save
                 if (oldDocument.id === 0) {
                     currentView.model.trigger("reloadDocumentList");
                 }
             });
-            this.$el.document("addEvent", "afterDelete", function (event, document, oldDocument)
+            this.$el.document("addEventListener", "afterDelete", function (event, document, oldDocument)
             {
                 currentView.model.trigger("removeDocument", document);
             });

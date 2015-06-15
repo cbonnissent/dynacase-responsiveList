@@ -26,6 +26,8 @@
 
 @grid-gutter-width: 0;
 
+@screen-md: 959px;
+
 body {
   overflow: hidden;
 }
@@ -55,6 +57,12 @@ body {
   .make-xs-column(1);
   .make-sm-column(1);
   @media (min-width: @screen-sm-max) {
+    .responsive-invisibility();
+  }
+}
+
+.hiddenLittle {
+  @media (max-width: @screen-sm-max) {
     .responsive-invisibility();
   }
 }
@@ -175,12 +183,6 @@ body {
     color: rgb(38, 58, 89);
   }
   margin-left: 5px;
-}
-
-.hiddenLittle {
-  @media (max-width: @screen-sm-max) {
-    .responsive-invisibility();
-  }
 }
 
 /* General */

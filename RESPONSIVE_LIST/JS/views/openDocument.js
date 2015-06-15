@@ -165,10 +165,15 @@ define([
 
         _resize: function opd_resize()
         {
-            var oldMax = this.nbMaxOpen;
+            var oldMax = this.nbMaxOpen, rightBorder, $createDocument = this.$el.find(".openDocuments__createDocument");
+            if ($createDocument.length === 0) {
+                rightBorder = this._getBorder(this.$el.find(".documentList"), "left");
+            } else {
+                rightBorder = this._getBorder($createDocument, "right");
+            }
             //compute space between openDocuments__createDocument and openDocuments__more
             if (this.isReady) {
-                this.nbMaxOpen = Math.floor((this._getBorder(this.$el.find(".openDocuments__more"), "left") - this._getBorder(this.$el.find(".openDocuments__createDocument"), "right") - 10) / 202);
+                this.nbMaxOpen = Math.floor((this._getBorder(this.$el.find(".openDocuments__more"), "left") - rightBorder - 10) / 202);
                 if (oldMax !== this.nbMaxOpen) {
                     this.renderOpenDocument();
                 }
