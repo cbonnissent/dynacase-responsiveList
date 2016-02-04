@@ -1,10 +1,9 @@
 define([
     "jquery",
     "underscore",
-    "rsp/hammer",
     "dcpDocument/document",
     "backbone"
-], function ($, _, Hammer)
+], function ($, _)
 {
 
     "use strict";
@@ -36,9 +35,7 @@ define([
             {
                 currentView.model.set(document);
                 currentView.model.set("attributes", this.documentController("getValues"));
-                if (!document.name || document.name !== "VOID_DOCUMENT") {
-                    currentView.model.trigger("reloadDocument", currentView.model.toJSON());
-                }
+                currentView.model.trigger("reloadDocument", currentView.model.toJSON());
                 $(this).find("header").hide();
                 afterLoaded();
             });
@@ -68,7 +65,6 @@ define([
                 currentView.model.trigger("removeDocument", document);
             });
             this.setFrameName();
-            this.setSwipeEvent();
             return this;
         },
 
@@ -109,29 +105,6 @@ define([
         {
             var name = "document_" + this.model.get("initid") + "_" + this.model.get("title");
             this.$el.find("iframe").attr("name", name);
-        },
-
-        setSwipeEvent: function opde_setSwipeEvent()
-        {
-            var iframe = this.$el.find("iframe"), currentView = this, addHammer = _.bind(function addHammer()
-            {
-                var iframeBody = this.contentWindow.document.body;
-                iframeBody.style.position = "absolute";
-                iframeBody.style.top = 0;
-                iframeBody.style.left = 0;
-                iframeBody.style.right = 0;
-                iframeBody.style.bottom = 0;
-                Hammer(iframeBody).on("swipeleft", function (event)
-                {
-                    currentView.model.collection.trigger("selectNext", currentView.model);
-                });
-                Hammer(iframeBody).on("swiperight", function (event)
-                {
-                    currentView.model.collection.trigger("selectPrevious", currentView.model);
-                });
-            }, iframe[0]);
-            iframe.on("load", addHammer);
-            addHammer();
         }
 
     });

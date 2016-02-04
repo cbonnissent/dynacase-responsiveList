@@ -9,9 +9,9 @@
             "rsp" : "RESPONSIVE_LIST/JS",
             "rspTemplate": "RESPONSIVE_LIST/templates.d",
             "dcpDocument": "DOCUMENT/IHM",
-            "jquery": "lib/KendoUI/2014.3/js/jquery",
-            "underscore": "lib/underscore/underscore",
-            "backbone" : "lib/backbone/backbone",
+            "jquery": "lib/jquery/ddui/jquery.min",
+            "underscore": "lib/underscore/underscore-min",
+            "backbone" : "lib/backbone/backbone-min",
             "bootstrap" : "lib/bootstrap/3/js/bootstrap.min",
             "text": 'lib/RequireJS/text'
         }

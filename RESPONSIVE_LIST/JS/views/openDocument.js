@@ -92,7 +92,7 @@ define([
         {
             var $preload = $('<div class="documentPreload" style="display : none;"></div>');
             this.$el.find(".documentsWrapper").append($preload);
-            $preload.document({"initid": "VOID_DOCUMENT"});
+            $preload.document();
         },
 
         switchSide: function opd_switchSide()
