@@ -109,7 +109,7 @@ define([
         {
             var $target = $(event.currentTarget);
             event.preventDefault();
-            this.openDocuments.add({"initid": $target.data("initid"), "viewId": "!coreCreation"});
+            this.openDocuments.add({"initid": $target.data("initid"), "viewId": "!defaultCreation"});
         },
 
         _addDocument: function opd_addDocument(model)

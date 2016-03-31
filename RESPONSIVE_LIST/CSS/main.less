@@ -37,6 +37,68 @@ body {
   .make-sm-column(12);
 }
 
+.hiddenLittle {
+  @media (max-width: @screen-sm-max) {
+    .responsive-invisibility();
+  }
+}
+
+.documentsWrapper__div {
+  width: 100%;
+  height: 100%;
+}
+
+/* General */
+.btn {
+  border-radius: 1px;
+}
+
+.openDocuments,
+.documentsList {
+  background-color: #CAD5DD;
+}
+
+/*
+ * Header
+ */
+
+.applicationName {
+  margin-left: 1em;
+}
+
+.unlog--button {
+  padding: 0;
+  margin: 0.25em 0.15em 0 1em;
+}
+
+.documentList__header {
+  background-color: #263A59;
+  color: #fff;
+}
+
+.documentList__header__icon {
+  height: 20px;
+}
+
+.documentList__header__user__icon {
+  padding-right: 5px;
+}
+
+.documentList__header__logout__icon {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.documentList__header__user {
+  padding-right: 10px;
+  line-height: 1.5em;
+}
+/**Left list **/
+
+.search__button {
+  padding-top: 4px;
+}
+
 .documentsList {
   .make-sm-column(12);
   .make-md-column(3);
@@ -45,6 +107,7 @@ body {
     border-right: 1px solid @nav-tabs-border-color;
   }
   z-index: 10;
+  padding: 10px;
 }
 
 .documentsList__searchList {
@@ -59,25 +122,6 @@ body {
   @media (min-width: @screen-sm-max) {
     .responsive-invisibility();
   }
-}
-
-.hiddenLittle {
-  @media (max-width: @screen-sm-max) {
-    .responsive-invisibility();
-  }
-}
-
-.applicationName {
-  margin-left: 1em;
-}
-
-.unlog--button {
-  padding: 0;
-  margin: 0.25em 0.15em 0 1em;
-}
-
-.search__button {
-  padding-top: 4px;
 }
 
 .documentsList__documents__list__element__nbResult {
@@ -122,108 +166,6 @@ body {
 .documentElement__state {
   position: relative;
   top: 0.4em;
-}
-
-.openDocuments {
-  //  .make-xs-column(12);
-  .make-sm-column(12);
-  .make-md-column(9);
-  .make-lg-column(9);
-  z-index: 10;
-}
-
-.documentsWrapper__div {
-  width: 100%;
-  height: 100%;
-}
-
-.openDocuments__tab {
-  position: relative;
-}
-
-.documentTab {
-  width: 200px;
-  height: 2em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.documentTab, li > a.documentTab {
-  padding: 0.2em 1em 0.2em 0.4em;
-  background-color: rgb(226, 226, 226);
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-}
-
-.documentTab__hidden, .documentTab__hidden a.documentTab {
-  background-color: white;
-  border: none;
-}
-
-.documentTab__remove {
-  position: absolute;
-  top: 0.1em;
-  right: 0.2em;
-}
-
-.openDocuments__createDocument {
-  .btn {
-    padding: 3px 12px;
-  }
-}
-
-.openDocuments__openDocumentList {
-  .btn {
-    padding: 0;
-    font-size: 0.9em;
-  }
-  span {
-    color: rgb(38, 58, 89);
-  }
-  margin-left: 5px;
-}
-
-/* General */
-.btn {
-  border-radius: 1px;
-}
-
-.openDocuments,
-.documentsList {
-  background-color: #CAD5DD;
-}
-
-/*
- * Header
- */
-.documentList__header {
-  background-color: #263A59;
-  color: #fff;
-}
-
-.documentList__header__icon {
-  height: 20px;
-}
-
-.documentList__header__user__icon {
-  padding-right: 5px;
-}
-
-.documentList__header__logout__icon {
-  padding-left: 15px;
-  cursor: pointer;
-}
-
-.documentList__header__user {
-  padding-right: 10px;
-  line-height: 1.5em;
-}
-
-/* Left list */
-.documentsList {
-  padding: 10px;
 }
 
 .documentsList__searchList,
@@ -299,7 +241,7 @@ body {
 
 .documentElement__state {
   text-align: left;
-  width: 7em;
+  width: 10em;
   text-overflow: ellipsis;
   overflow: hidden;
   font-weight: normal;
@@ -327,9 +269,60 @@ body {
  * documents tabs
  */
 
+.openDocuments__tab {
+  position: relative;
+}
+
+.documentTab {
+  width: 200px;
+  height: 2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.documentTab, li > a.documentTab {
+  padding: 0.2em 1em 0.2em 0.4em;
+  background-color: rgb(226, 226, 226);
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.documentTab__hidden, .documentTab__hidden a.documentTab {
+  background-color: white;
+  border: none;
+}
+
+.documentTab__remove {
+  position: absolute;
+  top: 0.1em;
+  right: 0.2em;
+}
+
+.openDocuments__createDocument {
+  .btn {
+    padding: 3px 12px;
+  }
+}
+
+.openDocuments__openDocumentList {
+  .btn {
+    padding: 0;
+    font-size: 0.9em;
+  }
+  span {
+    color: rgb(38, 58, 89);
+  }
+  margin-left: 5px;
+}
+
 .openDocuments {
+  .make-sm-column(12);
+  .make-md-column(9);
+  .make-lg-column(9);
+  z-index: 10;
   padding-top: 5px;
-  //border-bottom: 1px solid #ddd; artefact when no documents
 }
 
 .openDocuments__createDocument {

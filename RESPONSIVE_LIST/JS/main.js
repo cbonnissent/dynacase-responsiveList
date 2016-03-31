@@ -14,6 +14,15 @@ require(["jquery",
 
     "use strict";
 
+    var hash, getHash = function getHash()
+    {
+        var hash = location.hash;
+        if (hash.charAt(0) === "#") {
+            hash = hash.slice(1);
+        }
+        return hash;
+    };
+
     var toogleLittleMode = function() {
         $(".documentsList").toggleClass("hiddenLittle");
         $(".openDocuments").toggleClass("hiddenLittle");
@@ -82,6 +91,17 @@ require(["jquery",
         window.dcp.views.documentList.render();
         window.dcp.collections.searches.add(window.dcp.search_list);
         window.dcp.views.searches.displayDocumentList();
+
+        if (getHash()) {
+            hash = getHash();
+            if (/.*id=.*/.test(hash)) {
+                hash = /.*id=([^&]*)/.exec(hash);
+                hash = hash[1] || false;
+                if (hash) {
+                    window.dcp.collections.openDocuments.add({initid : hash, "revision" : -1}, {at: 0});
+                }
+            }
+        }
 
 
         $(".loading--initial").hide();
