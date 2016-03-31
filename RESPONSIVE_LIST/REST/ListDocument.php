@@ -127,6 +127,7 @@ class ListDocument extends DocumentCollection
         $this->_searchDoc->useCollection(
             $this->_collection->getPropertyValue("id")
         );
+        
         $this->_searchDoc->setObjectReturn();
         if (isset($this->contentParameters["keyword"])
             && !empty($this->contentParameters["keyword"])
@@ -136,6 +137,28 @@ class ListDocument extends DocumentCollection
                 true
             );
         }
+    }
+
+    /**
+     * Extract orderBy
+     *
+     * @return string
+     * @throws Exception
+     */
+    protected function extractOrderBy()
+    {
+        $orderBy = isset($this->contentParameters["orderBy"]) ? $this->contentParameters["orderBy"] : false;
+        if ($orderBy === false && $this->_collection) {
+            $orderBy = $this->_collection->getRawValue("rep_idsort", false) ? $this->_collection->getRawValue("rep_idsort", false) : $this->_collection->getRawValue("rep_sort", false);
+            if ($orderBy) {
+                $orderBy .= $this->_collection->getRawValue("rep_ordersort", false) ? " ".$this->_collection->getRawValue("rep_ordersort", false): "";
+            }
+        }
+        if ($orderBy === false) {
+            $orderBy = "title asc";
+        }
+        return $orderBy;
+        //return DocumentUtils::extractOrderBy($orderBy);
     }
 
     protected function getAttributeFields()

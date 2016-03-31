@@ -15,9 +15,6 @@ function main(Action &$action)
     $action->parent->addJsRef(
         "RESPONSIVE_LIST/JS/require_config.js?ws=" . $version
     );
-    $action->parent->addJsRef(
-        "lib/KendoUI/ddui/js/kendo-ddui-builded.js?ws=" . $version
-    );
     $modeDebug = \ApplicationParameterManager::getParameterValue(
         \ApplicationParameterManager::CURRENT_APPLICATION, "DEBUG"
     );

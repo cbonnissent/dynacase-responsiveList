@@ -50,7 +50,7 @@ define([
             this.listenTo(this.collection, "resetDocumentList", this._addAll);
             this.listenTo(this.collection, "syncDocumentList", this._updateNumber);
             this.listenTo(this.collection, "syncDocumentList", this._needToLoadMore);
-            this.listenTo(this, "reloadDocumentList", this.reloadAll);
+            this.listenTo(this, "reloadDocumentList", _.bind(this.reloadAll, this));
             this.listenTo(this, "reloadDocument", this.reloadDocument);
             this.listenTo(this, "removeDocument", this.removeDocument);
             this.$el.find(".documentsList__documents__search__form").on("submit", function (event)
