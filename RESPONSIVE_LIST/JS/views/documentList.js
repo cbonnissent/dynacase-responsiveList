@@ -11,8 +11,7 @@ define([
     var template = {
         "global": _.template('<div class="documentsList__documents__list__element <%- id %>">' +
         '   <div class="documentsList__documents__list__element__nbResult clearfix">' +
-        '       <span class="documentsList__documents__list__element__nbResult__container">Mise à jour...</span>' +
-        '       <button class="btn btn-link pull-right documentsList__documents__list__element__reload"><span class="glyphicon glyphicon-repeat pull-right" aria-hidden="true"></span></button>' +
+        '       <span class="documentsList__documents__list__element__nbResult__container pull-right">Mise à jour...</span>' +
         '   </div>' +
         '   <div class="documentsList__documents__list__elements">' +
         '       <div class="list-group"></div>' +
@@ -167,12 +166,12 @@ define([
 
         _updateNumber: function _updateNumber(model, list)
         {
-            var $currentDiv = this._getCurrentDiv(model), text = " document";
+            var $currentDiv = this._getCurrentDiv(model), text = "Nombre de résultats : ";
             if ($currentDiv) {
                 if (list.nbResult > 1) {
-                    text = " documents";
+                    text = "Nombre de résultats : ";
                 }
-                $currentDiv.find(".documentsList__documents__list__element__nbResult__container").text(list.nbResult + text);
+                $currentDiv.find(".documentsList__documents__list__element__nbResult__container").text(text + list.nbResult);
             }
             this._resize();
         },

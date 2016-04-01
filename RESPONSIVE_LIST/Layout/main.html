@@ -12,6 +12,47 @@
 </head>
 <body>
 <div class="container-fluid main-container">
+    <!-- start: HEADER -->
+    <div class="documentsList__header navbar navbar-fixed-top">
+        <!-- start: TOP NAVIGATION CONTAINER -->
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!-- start: LOGO -->
+                <img class="documentList__header__icon" src="[LOGO]">
+                <span class="documentList__header__application">[text_header]</span>
+                <!-- end: LOGO -->
+            </div>
+            <div class="navbar-tools">
+                <!-- start: TOP NAVIGATION MENU -->
+                <ul class="nav navbar-right">
+                    <!-- start: USER DROPDOWN -->
+                    <li class="dropdown documentList__header__user">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="fa fa-user"></span>
+                            <span class="username">[username]</span>
+                            <span class="fa fa-chevron-down documentList__header__user__chevron"></span>
+                        </a>
+                        <ul class="dropdown-menu documentList__header__user__dropdown">
+                            <li>
+                                <a href="utility_lock_screen.html"><span class="fa fa-lock"></span>
+                                    &nbsp;Lock Screen </a>
+                            </li>
+                            <li>
+                                <a href="login_example1.html">
+                                    <span class="fa fa-sign-out"></span>
+                                    &nbsp;Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end: USER DROPDOWN -->
+                </ul>
+                <!-- end: TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- end: TOP NAVIGATION CONTAINER -->
+    </div>
+    <!-- end: HEADER -->
     <div class="row loading loading--initial">
         <div class="loading__wrapper">
             <h1>[TEXT:RSP:Loading]</h1>
@@ -24,34 +65,14 @@
             <span class="glyphicon glyphicon-warning-sign"></span>
         </h1>
     </div>
-    <div class="row content" style="display : none;">
-        <div class="row">
-            <div class="col-xs-12 documentList__header">
-
-                <h4 class="applicationName pull-left">
-                  <img class="documentList__header__icon" src="[LOGO]">
-                  [text_header]
-                  </h4>
-                <h5 class="documentList__header__user pull-right ">
-                    <span class="hidden-xs">
-                        <span class="documentList__header__user__icon">
-                            <i class="fa fa-user"></i>
-                        </span>
-                        [username]
-                    </span>
-                  <span class="unlog--button documentList__header__logout__icon" title="Se déconnecter">
-                    <span class="fa fa-power-off"></span>
-                  </span>
-              </h5>
-            </div>
-        </div>
+    <div class="row content documentsList__content" style="display : none;">
         <div class="documentsList">
             <div class="row">
                 <div class="documentsList__searchList">
                 </div>
                 <div class="documentsList__switch__wrapper">
                     <button type="button" class="documentList__switch pull-right btn btn-link">
-                            <span class="fa fa-2x fa-bars"></span>
+                        <span class="fa fa-2x fa-bars"></span>
                     </button>
                 </div>
             </div>
@@ -59,9 +80,10 @@
                 <div class="documentsList__documents__search">
                     <form action="#" class="documentsList__documents__search__form">
                         <div class="input-group">
-                            <input type="text" class="form-control documentsList__documents__search__keyWord" placeholder="[TEXT:RESP:Search]">
+                            <input type="text" class="form-control documentsList__documents__search__keyWord input-lg"
+                                   placeholder="[TEXT:RESP:Search]">
                           <span class="input-group-btn">
-                            <button class="btn btn-default search__button">
+                            <button class="btn btn-info btn-lg search__button">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                           </span>

@@ -14,7 +14,7 @@ define([
         "global": _.template('<ul class="nav nav-tabs documentList">' +
         '   <li class="openDocuments__openDocumentCloseAll pull-right" title="Fermer tous les documents">' +
         '       <button type="button" class="btn btn-link"> ' +
-        '           <span class="fa fa-times-circle-o"></span>' +
+        '           <span class="fa fa-times"></span>' +
         '       </button>' +
         '   </li>' +
         '   <li class="openDocuments__more pull-right" style="visibility: hidden;">' +

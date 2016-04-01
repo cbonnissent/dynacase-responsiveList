@@ -10,6 +10,6 @@ $app_const = array(
     "TEXT_HEADER" => array("val" => "Présentation Document UI"),
     "INJECT_JS" => array("val" => "[]"),
     "INJECT_CSS" => array("val" => '[]'),
-    "LOGO" => array("val" => "Images/logoanakeen.png"),
+    "LOGO" => array("val" => "Images/logo-doc-empty.png"),
     "BACKGROUND_LOGO" => array("val" => "Images/logo-doc-empty.png")
 );

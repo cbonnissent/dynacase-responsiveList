@@ -7,7 +7,7 @@ define([
 
     "use strict";
 
-    var template = _.template('<select class="form-control documentsList__searchList__select"></select>');
+    var template = _.template('<select class="form-control documentsList__searchList__select input-lg"></select>');
 
     return Backbone.View.extend({
 
